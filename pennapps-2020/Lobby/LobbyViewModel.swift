@@ -51,6 +51,10 @@ class LobbyViewModel {
         }
     }
     
+    func observeGameStart() {
+        let roomRef = ref.child(WAITING_ROOMS_DB).child(ROOM_ID)
+    }
+    
     func observePlayers(playerAddedHandler: @escaping ((String?, LobbyPlayer?) -> Void), playerRemovedHandler: @escaping ((String?, LobbyPlayer?) -> Void)) {
                 
         let roomRef = ref.child(WAITING_ROOMS_DB).child(ROOM_ID)

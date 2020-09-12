@@ -35,9 +35,10 @@ class HomeScreenViewModel {
         while(checkIfRoomExists(roomId: roomId)) {
             roomId = String.random()
         }
-        let players = ["host": userId, userId : ["nickname" : nickname, "team": 0]] as [String : Any]
+        let players = ["host": userId, "host_started": false, userId : ["nickname" : nickname, "team": 0]] as [String : Any]
 //        let players: [String: String] = [userId:nickname]
         ref.child(WAITING_ROOMS_DB).child(roomId).setValue(players) { (error, dbRef) in
+            
             handler(error, roomId)
             return
         }
@@ -79,7 +80,7 @@ class HomeScreenViewModel {
             var newData = data
             var team = 0
             print(numPlayers)
-            if (numPlayers % 2 == 1) { team = 1 }
+            if (numPlayers % 2 == 0) { team = 1 }
             newData[userId] = ["nickname" : nickname, "team": team]
             self.ref.child(self.WAITING_ROOMS_DB).child(roomId).setValue(newData) { (error, dbRef) in
                 handler(error?.localizedDescription, roomId, hostId)

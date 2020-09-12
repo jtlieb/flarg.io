@@ -111,6 +111,9 @@ class HomeScreenVC: UIViewController, UITextFieldDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard segue.identifier != nil else { return }
+        
         let vc = segue.destination as! LobbyVC
         vc.delegate = self
         vc.viewModel = LobbyViewModel(roomId: self.roomId, ref: viewModel.ref, userId: self.userId, hostId: self.hostId)

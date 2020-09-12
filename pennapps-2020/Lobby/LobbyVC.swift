@@ -100,4 +100,8 @@ class LobbyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    @IBAction func startPressed(action: Any) {
+        
+    }
+    
 }
