@@ -17,6 +17,8 @@ class LobbyVC: UIViewController, UITableViewDelegate {
     
     let ref = DatabaseReference()
     var delegate: HomeScreenVC!
+    var isHost = false
+    var roomId: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()

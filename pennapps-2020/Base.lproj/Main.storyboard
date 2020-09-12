@@ -77,38 +77,13 @@
                         <outlet property="joinButton" destination="LtC-vZ-DWe" id="Tyo-q3-rLR"/>
                         <outlet property="nicknameTextField" destination="3fp-WN-fc5" id="h3j-52-Awp"/>
                         <outlet property="roomIdField" destination="OS2-k1-CHP" id="72x-T4-SNe"/>
-                        <segue destination="gMK-Mn-sTv" kind="show" identifier="join" id="Mne-Uq-qgv"/>
                         <segue destination="gsV-IL-6h3" kind="show" identifier="create" id="hKQ-gp-ONl"/>
+                        <segue destination="gsV-IL-6h3" kind="show" identifier="join" id="iuH-qO-jTh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="979.71014492753636" y="132.58928571428572"/>
-        </scene>
-        <!--Join GroupVC-->
-        <scene sceneID="ORl-QH-NBf">
-            <objects>
-                <viewController id="gMK-Mn-sTv" customClass="JoinGroupVC" customModule="pennapps_2020" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="QFe-j4-piH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="New Page!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFe-7p-knB">
-                                <rect key="frame" x="166" y="411" width="82" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="Y0Q-4z-Sfx"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="cCf-hV-yxb"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ziC-pB-ci0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1789.8550724637682" y="132.58928571428572"/>
         </scene>
         <!--LobbyVC-->
         <scene sceneID="hFF-ZS-dn4">
@@ -259,4 +234,7 @@
             <point key="canvasLocation" x="1789.8550724637682" y="851.78571428571422"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="iuH-qO-jTh"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		13052711250C6AD200529A64 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13052710250C6AD200529A64 /* Extensions.swift */; };
 		13052713250C6AF300529A64 /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13052712250C6AF300529A64 /* HomeScreenViewModel.swift */; };
-		13052716250C704500529A64 /* JoinGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13052715250C704500529A64 /* JoinGroupVC.swift */; };
 		137A5E73250C3CD4003EAD14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137A5E72250C3CD4003EAD14 /* AppDelegate.swift */; };
 		137A5E75250C3CD4003EAD14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137A5E74250C3CD4003EAD14 /* SceneDelegate.swift */; };
 		137A5E77250C3CD4003EAD14 /* HomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137A5E76250C3CD4003EAD14 /* HomeScreenVC.swift */; };
@@ -24,7 +23,6 @@
 /* Begin PBXFileReference section */
 		13052710250C6AD200529A64 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		13052712250C6AF300529A64 /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
-		13052715250C704500529A64 /* JoinGroupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinGroupVC.swift; sourceTree = "<group>"; };
 		137A5E6F250C3CD4003EAD14 /* pennapps-2020.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pennapps-2020.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		137A5E72250C3CD4003EAD14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		137A5E74250C3CD4003EAD14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,14 +50,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		13052714250C704500529A64 /* Join Group */ = {
-			isa = PBXGroup;
-			children = (
-				13052715250C704500529A64 /* JoinGroupVC.swift */,
-			);
-			path = "Join Group";
-			sourceTree = "<group>";
-		};
 		137A5E66250C3CD4003EAD14 = {
 			isa = PBXGroup;
 			children = (
@@ -82,7 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				76346066250C882700A24D75 /* Lobby Group */,
-				13052714250C704500529A64 /* Join Group */,
 				137A5E72250C3CD4003EAD14 /* AppDelegate.swift */,
 				137A5E74250C3CD4003EAD14 /* SceneDelegate.swift */,
 				137A5E76250C3CD4003EAD14 /* HomeScreenVC.swift */,
@@ -240,7 +229,6 @@
 			files = (
 				137A5E77250C3CD4003EAD14 /* HomeScreenVC.swift in Sources */,
 				137A5E73250C3CD4003EAD14 /* AppDelegate.swift in Sources */,
-				13052716250C704500529A64 /* JoinGroupVC.swift in Sources */,
 				137A5E75250C3CD4003EAD14 /* SceneDelegate.swift in Sources */,
 				13052711250C6AD200529A64 /* Extensions.swift in Sources */,
 				13052713250C6AF300529A64 /* HomeScreenViewModel.swift in Sources */,
