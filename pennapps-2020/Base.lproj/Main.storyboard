@@ -190,19 +190,33 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uuu-P2-iTW">
+                                <rect key="frame" x="20" y="742" width="374" height="100"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="xqK-VV-BMR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <state key="normal" title="START">
+                                    <color key="titleColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="SOk-25-2dY" firstAttribute="leading" secondItem="tJo-QP-BQa" secondAttribute="leading" constant="20" id="3pE-k2-zbz"/>
                             <constraint firstItem="tJo-QP-BQa" firstAttribute="trailing" secondItem="9BS-9u-Xms" secondAttribute="trailing" constant="20" id="5rG-Dh-BE1"/>
                             <constraint firstItem="AgQ-WE-irV" firstAttribute="top" secondItem="tJo-QP-BQa" secondAttribute="top" constant="20" id="8gj-PN-aF2"/>
+                            <constraint firstItem="tJo-QP-BQa" firstAttribute="trailing" secondItem="Uuu-P2-iTW" secondAttribute="trailing" constant="20" id="UQn-XV-sr7"/>
                             <constraint firstItem="tJo-QP-BQa" firstAttribute="trailing" secondItem="AgQ-WE-irV" secondAttribute="trailing" constant="20" id="V1J-b6-GCw"/>
                             <constraint firstItem="AgQ-WE-irV" firstAttribute="leading" secondItem="tJo-QP-BQa" secondAttribute="leading" constant="20" id="ZHn-o0-6FR"/>
                             <constraint firstItem="Jg3-Td-X8j" firstAttribute="leading" secondItem="tJo-QP-BQa" secondAttribute="leading" constant="20" id="afz-Pi-yk7"/>
                             <constraint firstItem="9BS-9u-Xms" firstAttribute="top" secondItem="SOk-25-2dY" secondAttribute="bottom" constant="30" id="amb-Q5-U0d"/>
+                            <constraint firstItem="tJo-QP-BQa" firstAttribute="bottom" secondItem="Uuu-P2-iTW" secondAttribute="bottom" constant="20" id="egh-W7-bpP"/>
                             <constraint firstItem="SOk-25-2dY" firstAttribute="top" secondItem="Jg3-Td-X8j" secondAttribute="bottom" constant="50" id="gof-XO-qt5"/>
                             <constraint firstItem="9BS-9u-Xms" firstAttribute="leading" secondItem="tJo-QP-BQa" secondAttribute="leading" constant="20" id="jlR-CW-Ha2"/>
                             <constraint firstItem="tJo-QP-BQa" firstAttribute="trailing" secondItem="Jg3-Td-X8j" secondAttribute="trailing" constant="20" id="p76-DO-CBI"/>
+                            <constraint firstItem="Uuu-P2-iTW" firstAttribute="leading" secondItem="tJo-QP-BQa" secondAttribute="leading" constant="20" id="sPA-04-nLu"/>
                             <constraint firstItem="tJo-QP-BQa" firstAttribute="trailing" secondItem="SOk-25-2dY" secondAttribute="trailing" constant="20" id="xAz-WH-3fG"/>
                             <constraint firstItem="Jg3-Td-X8j" firstAttribute="top" secondItem="AgQ-WE-irV" secondAttribute="bottom" constant="20" id="y0s-xc-q69"/>
                         </constraints>
@@ -212,6 +226,7 @@
                     <connections>
                         <outlet property="blueTeamTable" destination="9BS-9u-Xms" id="kKx-we-0zi"/>
                         <outlet property="redTeamTable" destination="Jg3-Td-X8j" id="sl4-Wp-oig"/>
+                        <outlet property="startButton" destination="Uuu-P2-iTW" id="6Nb-Fh-n14"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EeX-rp-Hdg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -263,6 +278,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9hg-2z-naf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WMM-Fj-9Dm">
+                    <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button"/>
+                </button>
             </objects>
             <point key="canvasLocation" x="1789.8550724637682" y="851.78571428571422"/>
         </scene>

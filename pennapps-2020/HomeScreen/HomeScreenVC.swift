@@ -86,15 +86,6 @@ class HomeScreenVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func createPressed(sender: Any) {
         print("Create Pressed")
-        
-        let roomId = roomIdField.text
-        if (!viewModel.checkNotEmptyOrNull(s: roomId!)) {
-            print("Invalid roomId")
-            roomLabel.isHidden = false
-            return
-        } else {
-            roomLabel.isHidden = true
-        }
 
         let nickname = nicknameTextField.text
         if (!viewModel.checkNotEmptyOrNull(s: nickname!)) {
