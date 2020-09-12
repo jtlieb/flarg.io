@@ -18,9 +18,10 @@ class GameViewModel {
     var hostId: String!
     var gamePlayers: [GamePlayer]!
     
-    init(roomId: String, ref: DatabaseReference!, hostId: String, gamePlayers: [GamePlayer]) {
+    init(roomId: String, ref: DatabaseReference!, userId: String, hostId: String, gamePlayers: [GamePlayer]) {
         self.ROOM_ID = roomId
         self.ref = ref
+        self.userId = userId
         self.hostId = hostId
         self.gamePlayers = gamePlayers
     }

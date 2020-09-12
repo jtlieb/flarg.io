@@ -141,7 +141,7 @@ class LobbyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         let vc = segue.destination as! GameVC
         vc.delegate = self
-        vc.viewModel = GameViewModel(roomId: viewModel.ROOM_ID, ref: viewModel.ref, hostId: viewModel.hostId, gamePlayers: viewModel.getGamePlayers())
+        vc.viewModel = GameViewModel(roomId: viewModel.ROOM_ID, ref: viewModel.ref, userId: viewModel.userId, hostId: viewModel.hostId, gamePlayers: viewModel.getGamePlayers())
     }
     
 }
