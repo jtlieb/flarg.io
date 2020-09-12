@@ -61,6 +61,7 @@ class HomeScreenVC: UIViewController {
         viewModel.joinWaitingRoom(ref: ref, roomId: roomId!, userId: UUID().uuidString, nickname: nickname!, handler: { errorMsg, dbRef in
             if (errorMsg != nil) {
                 print(errorMsg)
+                self.notifyUser(title: "No Room", message: "This room has not been created")
             } else {
                 self.roomLabel.isHidden = true
                 self.nicknameLabel.isHidden = true
@@ -100,6 +101,19 @@ class HomeScreenVC: UIViewController {
         }
     }
     
+    func notifyUser(title: String, message: String) -> Void
+    {
+        let alert = UIAlertController(title: title,
+            message: message,
+            preferredStyle: UIAlertController.Style.alert)
+
+        let cancelAction = UIAlertAction(title: "OK",
+            style: .cancel, handler: nil)
+
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true)
+
+    }
 
 
 }
