@@ -14,6 +14,7 @@ class LobbyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var redTeamTable: UITableView!
     @IBOutlet weak var blueTeamTable: UITableView!
+    @IBOutlet weak var startButton: UIButton?
     
     var delegate: HomeScreenVC!
     var viewModel: LobbyViewModel!
@@ -75,6 +76,7 @@ class LobbyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 self.reloadTables()
             }
         }
+        self.startButton?.isHidden = !self.viewModel.isHost()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
