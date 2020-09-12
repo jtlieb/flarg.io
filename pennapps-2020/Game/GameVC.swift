@@ -17,6 +17,9 @@ class GameVC: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var arView: ARSCNView!
     let config = ARWorldTrackingConfiguration()
     
+    var delegate: LobbyVC!
+    var gamePlayers: [GamePlayer]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         arView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]

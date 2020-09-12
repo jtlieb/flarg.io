@@ -54,6 +54,26 @@ class LobbyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         redTeamTable.register(LobbyPlayerTableViewCell.self, forCellReuseIdentifier: "cellId")
         blueTeamTable.register(LobbyPlayerTableViewCell.self, forCellReuseIdentifier: "cellId")
+        
+        self.viewModel.observeGameLaunchedComplete { (error, gameLaunched) in
+            print("observingGameLaunched")
+            if (gameLaunched != nil && gameLaunched!) {
+                print("SEGUE INTO AR")
+                self.performSegue(withIdentifier: "start", sender: self)
+            }
+        }
+        
+        if !viewModel.isHost() {
+            viewModel.observeGameLaunched { (error, gameStarted) in
+                if error != nil {
+                    print(error)
+                } else {
+                    self.viewModel.joinStartedRoom { (error, gamePlayer) in
+                        
+                    }
+                }
+            }
+        }
 
         viewModel.observePlayers(playerAddedHandler: { (error, addedPlayer) in
             if (error != nil) {
@@ -101,7 +121,28 @@ class LobbyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     @IBAction func startPressed(action: Any) {
+        print("start pressed")
+        viewModel.startRoom { (error, gamePlayer) in
+            if error != nil {
+                print(error)
+            } else {
+                print("room started")
+                self.viewModel.changeHostStartedRoomStatus { (error) in
+                    if error != nil {
+                        print(error)
+                    }
+                }
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        guard segue.identifier != nil else { return }
+        
+        let vc = segue.destination as! GameVC
+        vc.delegate = self
+        vc.gamePlayers = viewModel.getGamePlayers()
     }
     
 }
