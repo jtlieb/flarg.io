@@ -15,6 +15,10 @@ class GameVC: UIViewController, ARSCNViewDelegate {
     
     
     @IBOutlet weak var arView: ARSCNView!
+    @IBOutlet weak var xPos: UILabel!
+    @IBOutlet weak var yPos: UILabel!
+    @IBOutlet weak var zPos: UILabel!
+    
     let config = ARWorldTrackingConfiguration()
     
     override func viewDidLoad() {
@@ -31,7 +35,11 @@ extension GameVC: ARSessionDelegate {
 
     func session(_ session: ARSession, didUpdate currentFrame: ARFrame) {
         let transform = currentFrame.camera.transform
-        dump(transform)
-        print("Updates")                               // UPDATING
+        // UPDATING
+        let pos = arView.pointOfView!.position
+        self.xPos.text = "\(pos.x)"
+        self.yPos.text = "\(pos.y)"
+        self.zPos.text = "\(pos.z)"
+       
     }
 }
