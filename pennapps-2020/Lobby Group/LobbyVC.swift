@@ -43,7 +43,8 @@ class LobbyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
+        self.title = "Room ID: \(self.delegate.roomId)"
         redTeamTable.delegate = self
         blueTeamTable.delegate = self
         
@@ -76,8 +77,8 @@ class LobbyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
 
         if self.isMovingFromParent {
             viewModel.exitRoom { (error) in
