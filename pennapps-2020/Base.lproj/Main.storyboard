@@ -76,7 +76,7 @@
                         <outlet property="createButton" destination="F8r-WS-pot" id="lc4-V9-Xgf"/>
                         <outlet property="joinButton" destination="LtC-vZ-DWe" id="Tyo-q3-rLR"/>
                         <outlet property="nicknameTextField" destination="3fp-WN-fc5" id="h3j-52-Awp"/>
-                        <outlet property="roomIDField" destination="OS2-k1-CHP" id="gDB-0S-Uu4"/>
+                        <outlet property="roomIdField" destination="OS2-k1-CHP" id="72x-T4-SNe"/>
                         <segue destination="gMK-Mn-sTv" kind="show" identifier="join" id="Mne-Uq-qgv"/>
                         <segue destination="gsV-IL-6h3" kind="show" identifier="create" id="hKQ-gp-ONl"/>
                     </connections>
