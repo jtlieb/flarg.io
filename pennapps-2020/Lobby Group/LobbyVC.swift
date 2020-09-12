@@ -25,7 +25,8 @@ class LobbyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
         let team = viewModel.getTeam(team: tableView.tag)
-        cell.textLabel?.text = team[indexPath.item].nickName
+        let user = team[indexPath.item]
+        cell.textLabel?.text = user.nickName + (user.userId == viewModel.hostId ? " (host)" : "")
         return cell
     }
     
@@ -83,7 +84,7 @@ class LobbyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     print("Error exiting waiting room")
                 } else {
                     self.viewModel.removeLobbyPlayer(userId: self.viewModel.userId, { _ in })
-                    if (self.viewModel.isHost) {
+                    if (self.viewModel.isHost()) {
                         self.viewModel.deleteLobby { (error2, dbRef2) in
                             if (error != nil) {
                                 print("Error deleting waiting room")

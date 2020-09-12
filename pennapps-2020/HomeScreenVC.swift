@@ -24,6 +24,7 @@ class HomeScreenVC: UIViewController, UITextFieldDelegate {
     
     var roomId = ""
     var userId = ""
+    var hostId = ""
     
     // Model (data structures and stuff)
     // Firebase reference. Use to get data about rooms and update rooms
@@ -68,15 +69,15 @@ class HomeScreenVC: UIViewController, UITextFieldDelegate {
         }
         
         let userId = UUID().uuidString
-        viewModel.joinWaitingRoom(roomId: roomId!, userId: userId, nickname: nickname!, handler: { errorMsg, dbRef in
+        viewModel.joinWaitingRoom(roomId: roomId!, userId: userId, nickname: nickname!, handler: { errorMsg, dbRef, hostId in
             if (errorMsg != nil) {
                 self.notifyUser(title: "Error", message: "A room with this ID does not exist")
             } else {
                 self.roomId = roomId!
                 self.userId = userId
+                self.hostId = hostId!
                 self.roomLabel.isHidden = true
                 self.nicknameLabel.isHidden = true
-
                 self.performSegue(withIdentifier: "join", sender: self)
             }
         })
@@ -100,6 +101,7 @@ class HomeScreenVC: UIViewController, UITextFieldDelegate {
                 print("Successfully created room" + roomId)
                 self.roomId = roomId
                 self.userId = userId
+                self.hostId = userId
                 self.performSegue(withIdentifier: "create", sender: self)
             }
         })
@@ -108,7 +110,7 @@ class HomeScreenVC: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! LobbyVC
         vc.delegate = self
-        vc.viewModel = LobbyViewModel(roomId: self.roomId, ref: viewModel.ref, isHost: segue.identifier == "create", userId: self.userId)
+        vc.viewModel = LobbyViewModel(roomId: self.roomId, ref: viewModel.ref, userId: self.userId, hostId: self.hostId)
     }
     
 //    func notifyUser(title: String, message: String) -> Void {

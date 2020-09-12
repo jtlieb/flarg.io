@@ -15,21 +15,24 @@ class LobbyViewModel {
     var ROOM_ID: String
     
     var ref: DatabaseReference!
-    var isHost = false
-    
     var userId: String!
+    var hostId: String!
     
     private var lobbyPlayers: [LobbyPlayer] = []
     
-    init(roomId: String, ref: DatabaseReference!, isHost: Bool, userId: String) {
+    init(roomId: String, ref: DatabaseReference!, userId: String, hostId: String) {
         self.ROOM_ID = roomId
         self.ref = ref
-        self.isHost = isHost
         self.userId = userId
+        self.hostId = hostId
     }
     
     func isEmpty() -> Bool {
         return lobbyPlayers.count == 0
+    }
+    
+    func isHost() -> Bool {
+        return userId == hostId
     }
     
     func getTeam(team: Int) -> [LobbyPlayer] {

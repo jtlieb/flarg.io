@@ -54,20 +54,25 @@ class HomeScreenViewModel {
     }
     
     // joining a waiting room
-    func joinWaitingRoom(roomId: String, userId: String, nickname: String, handler: @escaping (String?, String) -> Void) {
+    func joinWaitingRoom(roomId: String, userId: String, nickname: String, handler: @escaping (String?, String, String?) -> Void) {
 //        if (!checkIfRoomExists(ref: ref, roomId: roomId)) {
 //            handler("waiting room does not exist", roomId)
 //        }
         
         ref.child(WAITING_ROOMS_DB).child(roomId).observeSingleEvent(of: .value) { (snapshot) in
             guard let data = snapshot.value as? [String: Any] else {
-                handler("Players in this waiting room are wrong type", roomId)
+                handler("Players in this waiting room are wrong type", roomId, nil)
+                return
+            }
+            
+            guard let hostId = data["host"] as? String else {
+                handler("Couldn't find host userId", roomId, nil)
                 return
             }
             
             let numPlayers = data.count - 1
             if (numPlayers == self.MAX_PARTICIPANTS) {
-                handler("The maximum number of participants has been met", roomId)
+                handler("The maximum number of participants has been met", roomId, nil)
                 return
             }
             
@@ -77,7 +82,7 @@ class HomeScreenViewModel {
             if (numPlayers % 2 == 1) { team = 1 }
             newData[userId] = ["nickname" : nickname, "team": team]
             self.ref.child(self.WAITING_ROOMS_DB).child(roomId).setValue(newData) { (error, dbRef) in
-                handler(error?.localizedDescription, roomId)
+                handler(error?.localizedDescription, roomId, hostId)
                 return
             }
         }
