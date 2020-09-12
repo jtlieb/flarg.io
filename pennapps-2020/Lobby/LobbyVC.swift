@@ -58,6 +58,7 @@ class LobbyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.viewModel.observeGameLaunchedComplete { (error, gameLaunched) in
             print("observingGameLaunched")
             if (gameLaunched != nil && gameLaunched!) {
+                print("SEGUE INTO AR")
                 self.performSegue(withIdentifier: "start", sender: self)
             }
         }
@@ -141,7 +142,7 @@ class LobbyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         let vc = segue.destination as! GameVC
         vc.delegate = self
-        vc.viewModel = GameViewModel(roomId: viewModel.ROOM_ID, ref: viewModel.ref, userId: viewModel.userId, hostId: viewModel.hostId, gamePlayers: viewModel.getGamePlayers())
+        vc.gamePlayers = viewModel.getGamePlayers()
     }
     
 }
