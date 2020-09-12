@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
 
@@ -19,5 +20,19 @@ extension String {
             randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
         }
         return randomString
+    }
+}
+
+extension UIViewController {
+    func notifyUser(title: String, message: String) -> Void {
+        let alert = UIAlertController(title: title,
+            message: message,
+            preferredStyle: UIAlertController.Style.alert)
+
+        let cancelAction = UIAlertAction(title: "OK",
+            style: .cancel, handler: nil)
+
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true)
     }
 }

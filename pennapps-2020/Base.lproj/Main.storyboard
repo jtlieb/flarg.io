@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zOT-fQ-Mgr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zOT-fQ-Mgr">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -98,9 +98,7 @@
                         <outlet property="nicknameLabel" destination="Crw-Tc-X2r" id="9ke-i3-Tha"/>
                         <outlet property="nicknameTextField" destination="3fp-WN-fc5" id="h3j-52-Awp"/>
                         <outlet property="roomIdField" destination="OS2-k1-CHP" id="72x-T4-SNe"/>
-
                         <outlet property="roomLabel" destination="lx7-Jw-nvy" id="tNk-LT-89f"/>
-                        <segue destination="gMK-Mn-sTv" kind="show" identifier="join" id="Mne-Uq-qgv"/>
                         <segue destination="gsV-IL-6h3" kind="show" identifier="create" id="hKQ-gp-ONl"/>
                         <segue destination="gsV-IL-6h3" kind="show" identifier="join" id="iuH-qO-jTh"/>
                     </connections>
@@ -117,14 +115,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9BS-9u-Xms">
+                            <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9BS-9u-Xms">
                                 <rect key="frame" x="20" y="469" width="374" height="200"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="FoP-2a-EeI"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="OUP-It-W5W" style="IBUITableViewCellStyleDefault" id="H8D-XY-9SO">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellId" textLabel="OUP-It-W5W" style="IBUITableViewCellStyleDefault" id="H8D-XY-9SO" customClass="LobbyPlayerTableViewCell" customModule="pennapps_2020" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H8D-XY-9SO" id="jp6-sH-9Rd">
@@ -165,10 +163,10 @@
                                     <constraint firstAttribute="height" constant="200" id="Vbj-xC-V29"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="TDb-IK-9M1" style="IBUITableViewCellStyleDefault" id="ReV-nc-Ff8">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellId" textLabel="TDb-IK-9M1" style="IBUITableViewCellStyleDefault" id="ReV-nc-Ff8" customClass="LobbyPlayerTableViewCell" customModule="pennapps_2020" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ReV-nc-Ff8" id="Iem-Yc-F4n">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ReV-nc-Ff8" id="Iem-Yc-F4n" customClass="LobbyPlayerTableViewCell" customModule="pennapps_2020" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>

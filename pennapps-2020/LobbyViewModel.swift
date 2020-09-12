@@ -16,32 +16,41 @@ class LobbyViewModel {
     
     var ref: DatabaseReference!
     var isHost = false
-    var roomId: String!
     
-    private var lobbyPlayers : [LobbyPlayer] = []
+    var userId: String!
     
-    init(roomId: String, ref: DatabaseReference!, isHost: Bool) {
+    private var lobbyPlayers: [LobbyPlayer] = []
+    
+    init(roomId: String, ref: DatabaseReference!, isHost: Bool, userId: String) {
         self.ROOM_ID = roomId
         self.ref = ref
         self.isHost = isHost
+        self.userId = userId
     }
     
-    func getLobbyPlayers() -> [LobbyPlayer] {
-        return lobbyPlayers
-    } 
+    func isEmpty() -> Bool {
+        return lobbyPlayers.count == 0
+    }
+    
+    func getTeam(team: Int) -> [LobbyPlayer] {
+        return lobbyPlayers.filter { (lobbyPlayer) -> Bool in
+            lobbyPlayer.team == team
+        }
+    }
     
     func addLobbyPlayer(lobbyPlayer: LobbyPlayer) {
         lobbyPlayers.append(lobbyPlayer)
     }
     
-    func removeLobbyPlayer(lobbyPlayer: LobbyPlayer) {
-        lobbyPlayers.removeAll { (player) -> Bool in
-            player.userId == lobbyPlayer.userId
+    func removeLobbyPlayer(userId: String, _ roomHandler: @escaping (Bool) -> Void) {
+        lobbyPlayers.removeAll { (lobbyPlayer) -> Bool in
+            lobbyPlayer.userId == userId
         }
         
         if (lobbyPlayers.count == 0) {
-            // remove waiting room from database
+            roomHandler(true)
         }
+        
     }
     
     func observePlayers(playerAddedHandler: @escaping ((String?, LobbyPlayer?) -> Void), playerRemovedHandler: @escaping ((String?, LobbyPlayer?) -> Void)) {
@@ -89,5 +98,16 @@ class LobbyViewModel {
             
             playerRemovedHandler(nil, LobbyPlayer(userId: snapshot.key, nickName: nickname, team: team))
         }
+    }
+    
+    func exitLobby(handler: @escaping (Error?, DatabaseReference) -> Void) {
+        print(userId + "is exiting")
+        ref.child(WAITING_ROOMS_DB).child(ROOM_ID).child(userId).removeValue { (error, dbRef) in
+            handler(error, dbRef)
+        }
+    }
+    
+    func deleteLobby(handler: @escaping (Error?, DatabaseReference) -> Void) {
+        ref.child(WAITING_ROOMS_DB).child(ROOM_ID).removeValue()
     }
 }

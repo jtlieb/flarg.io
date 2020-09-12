@@ -23,6 +23,7 @@ class HomeScreenVC: UIViewController, UITextFieldDelegate {
     var evenNumJoinPressed = true
     
     var roomId = ""
+    var userId = ""
     
     // Model (data structures and stuff)
     // Firebase reference. Use to get data about rooms and update rooms
@@ -66,12 +67,13 @@ class HomeScreenVC: UIViewController, UITextFieldDelegate {
             nicknameLabel.isHidden = true
         }
         
-        
-        viewModel.joinWaitingRoom(roomId: roomId!, userId: UUID().uuidString, nickname: nickname!, handler: { errorMsg, dbRef in
+        let userId = UUID().uuidString
+        viewModel.joinWaitingRoom(roomId: roomId!, userId: userId, nickname: nickname!, handler: { errorMsg, dbRef in
             if (errorMsg != nil) {
                 self.notifyUser(title: "Error", message: "A room with this ID does not exist")
             } else {
                 self.roomId = roomId!
+                self.userId = userId
                 self.roomLabel.isHidden = true
                 self.nicknameLabel.isHidden = true
 
@@ -90,12 +92,14 @@ class HomeScreenVC: UIViewController, UITextFieldDelegate {
             return
         }
         
-        viewModel.createWaitingRoom(userId: UUID().uuidString, nickname: nickname!, handler: { error, roomId in
+        let userId = UUID().uuidString
+        viewModel.createWaitingRoom(userId: userId, nickname: nickname!, handler: { error, roomId in
             if (error != nil) {
                 self.notifyUser(title: "Error", message: "There was an error creating this room")
             } else {
                 print("Successfully created room" + roomId)
                 self.roomId = roomId
+                self.userId = userId
                 self.performSegue(withIdentifier: "create", sender: self)
             }
         })
@@ -104,20 +108,20 @@ class HomeScreenVC: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! LobbyVC
         vc.delegate = self
-        vc.viewModel = LobbyViewModel(roomId: self.roomId, ref: viewModel.ref, isHost: segue.identifier == "create")
+        vc.viewModel = LobbyViewModel(roomId: self.roomId, ref: viewModel.ref, isHost: segue.identifier == "create", userId: self.userId)
     }
     
-    func notifyUser(title: String, message: String) -> Void {
-        let alert = UIAlertController(title: title,
-            message: message,
-            preferredStyle: UIAlertController.Style.alert)
-
-        let cancelAction = UIAlertAction(title: "OK",
-            style: .cancel, handler: nil)
-
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true)
-    }
+//    func notifyUser(title: String, message: String) -> Void {
+//        let alert = UIAlertController(title: title,
+//            message: message,
+//            preferredStyle: UIAlertController.Style.alert)
+//
+//        let cancelAction = UIAlertAction(title: "OK",
+//            style: .cancel, handler: nil)
+//
+//        alert.addAction(cancelAction)
+//        self.present(alert, animated: true)
+//    }
 
 }
 

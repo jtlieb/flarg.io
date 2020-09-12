@@ -16,6 +16,7 @@
 		137A5E7C250C3CD6003EAD14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 137A5E7B250C3CD6003EAD14 /* Assets.xcassets */; };
 		137A5E7F250C3CD6003EAD14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 137A5E7D250C3CD6003EAD14 /* LaunchScreen.storyboard */; };
 		137A5E8B250C45F9003EAD14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 137A5E8A250C45F9003EAD14 /* GoogleService-Info.plist */; };
+		13AC1041250CC122003512FA /* LobbyPlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC1040250CC122003512FA /* LobbyPlayerTableViewCell.swift */; };
 		715E1912DA98607464DA3DB5 /* Pods_pennapps_2020.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844C4D806B4F875F9ECA09A8 /* Pods_pennapps_2020.framework */; };
 		76346068250C883900A24D75 /* LobbyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76346067250C883900A24D75 /* LobbyVC.swift */; };
 		E810E093250C9A6B00942D72 /* LobbyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E810E091250C9A6B00942D72 /* LobbyViewModel.swift */; };
@@ -35,6 +36,7 @@
 		137A5E7E250C3CD6003EAD14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		137A5E80250C3CD6003EAD14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		137A5E8A250C45F9003EAD14 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		13AC1040250CC122003512FA /* LobbyPlayerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyPlayerTableViewCell.swift; sourceTree = "<group>"; };
 		76346067250C883900A24D75 /* LobbyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyVC.swift; sourceTree = "<group>"; };
 		844C4D806B4F875F9ECA09A8 /* Pods_pennapps_2020.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pennapps_2020.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAC17A8D30BF73C28BB1FAD7 /* Pods-pennapps-2020.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pennapps-2020.release.xcconfig"; path = "Target Support Files/Pods-pennapps-2020/Pods-pennapps-2020.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 		76346066250C882700A24D75 /* Lobby Group */ = {
 			isa = PBXGroup;
 			children = (
+				13AC1040250CC122003512FA /* LobbyPlayerTableViewCell.swift */,
 				76346067250C883900A24D75 /* LobbyVC.swift */,
 			);
 			path = "Lobby Group";
@@ -240,6 +243,7 @@
 				13052711250C6AD200529A64 /* Extensions.swift in Sources */,
 				13052713250C6AF300529A64 /* HomeScreenViewModel.swift in Sources */,
 				E810E094250C9A6B00942D72 /* LobbyPlayer.swift in Sources */,
+				13AC1041250CC122003512FA /* LobbyPlayerTableViewCell.swift in Sources */,
 				76346068250C883900A24D75 /* LobbyVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
