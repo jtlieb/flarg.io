@@ -17,7 +17,7 @@ class LobbyViewModel {
         self.ROOM_ID = roomId
     }
     
-    func observePlayers(ref: DatabaseReference, handler: ((String?, [LobbyPlayer]) -> Void)) {
+    func observePlayers(ref: DatabaseReference, handler: @escaping ((String?, [LobbyPlayer]) -> Void)) {
         ref.child("messages").observe(.childChanged) { (snapshot, key) in
             guard let data = snapshot.value as? [String: Any] else {
                 handler("Players in this waiting room are wrong type", [])

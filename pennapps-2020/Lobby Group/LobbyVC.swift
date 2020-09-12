@@ -16,6 +16,7 @@ class LobbyVC: UIViewController, UITableViewDelegate {
     @IBOutlet weak var blueTeamTable: UITableView!
     
     let ref = DatabaseReference()
+    var delegate: HomeScreenVC!
     
     override func viewDidLoad() {
         super.viewDidLoad()
