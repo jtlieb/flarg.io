@@ -26,6 +26,9 @@ class GameVC: UIViewController, ARSCNViewDelegate {
         arView.delegate = self
         arView.session.run(config)
         arView.session.delegate = self
+        
+        print("game players: ")
+        print(gamePlayers)
     }
     
 }
