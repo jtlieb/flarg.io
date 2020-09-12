@@ -110,10 +110,10 @@
             </objects>
             <point key="canvasLocation" x="1789.8550724637682" y="132.58928571428572"/>
         </scene>
-        <!--View Controller-->
+        <!--LobbyVC-->
         <scene sceneID="hFF-ZS-dn4">
             <objects>
-                <viewController id="gsV-IL-6h3" sceneMemberID="viewController">
+                <viewController id="gsV-IL-6h3" customClass="LobbyVC" customModule="pennapps_2020" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6pv-rq-pqC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

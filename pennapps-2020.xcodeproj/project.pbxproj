@@ -17,6 +17,7 @@
 		137A5E7C250C3CD6003EAD14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 137A5E7B250C3CD6003EAD14 /* Assets.xcassets */; };
 		137A5E7F250C3CD6003EAD14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 137A5E7D250C3CD6003EAD14 /* LaunchScreen.storyboard */; };
 		137A5E8B250C45F9003EAD14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 137A5E8A250C45F9003EAD14 /* GoogleService-Info.plist */; };
+		76346068250C883900A24D75 /* LobbyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76346067250C883900A24D75 /* LobbyVC.swift */; };
 		E4207E53619E53D2FB2A0AA2 /* Pods_pennapps_2020.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C50E336A03AB7018D6E42F /* Pods_pennapps_2020.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		137A5E80250C3CD6003EAD14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		137A5E8A250C45F9003EAD14 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		28C50E336A03AB7018D6E42F /* Pods_pennapps_2020.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pennapps_2020.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		76346067250C883900A24D75 /* LobbyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyVC.swift; sourceTree = "<group>"; };
 		D559E394BB9556A34BCA09F2 /* Pods-pennapps-2020.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pennapps-2020.debug.xcconfig"; path = "Target Support Files/Pods-pennapps-2020/Pods-pennapps-2020.debug.xcconfig"; sourceTree = "<group>"; };
 		DFAE6BD75A961335F709C8BA /* Pods-pennapps-2020.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pennapps-2020.release.xcconfig"; path = "Target Support Files/Pods-pennapps-2020/Pods-pennapps-2020.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +81,7 @@
 		137A5E71250C3CD4003EAD14 /* pennapps-2020 */ = {
 			isa = PBXGroup;
 			children = (
+				76346066250C882700A24D75 /* Lobby Group */,
 				13052714250C704500529A64 /* Join Group */,
 				137A5E72250C3CD4003EAD14 /* AppDelegate.swift */,
 				137A5E74250C3CD4003EAD14 /* SceneDelegate.swift */,
@@ -92,6 +95,14 @@
 				13052712250C6AF300529A64 /* HomeScreenViewModel.swift */,
 			);
 			path = "pennapps-2020";
+			sourceTree = "<group>";
+		};
+		76346066250C882700A24D75 /* Lobby Group */ = {
+			isa = PBXGroup;
+			children = (
+				76346067250C883900A24D75 /* LobbyVC.swift */,
+			);
+			path = "Lobby Group";
 			sourceTree = "<group>";
 		};
 		9C7443281B792A62262A04E8 /* Pods */ = {
@@ -233,6 +244,7 @@
 				137A5E75250C3CD4003EAD14 /* SceneDelegate.swift in Sources */,
 				13052711250C6AD200529A64 /* Extensions.swift in Sources */,
 				13052713250C6AF300529A64 /* HomeScreenViewModel.swift in Sources */,
+				76346068250C883900A24D75 /* LobbyVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
