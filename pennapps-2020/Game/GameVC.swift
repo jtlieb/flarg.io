@@ -11,7 +11,7 @@ import UIKit
 import ARKit
 import Firebase
 
-class GameVC: UIViewController {
+class GameVC: UIViewController, ARSCNViewDelegate {
     
     
     @IBOutlet weak var arView: ARSCNView!
@@ -20,7 +20,18 @@ class GameVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         arView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
+        arView.delegate = self
         arView.session.run(config)
+        arView.session.delegate = self
     }
     
+}
+
+extension GameVC: ARSessionDelegate {
+
+    func session(_ session: ARSession, didUpdate currentFrame: ARFrame) {
+        let transform = currentFrame.camera.transform
+        print(transform)
+        print("Updates")                               // UPDATING
+    }
 }
