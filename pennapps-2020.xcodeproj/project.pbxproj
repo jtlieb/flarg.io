@@ -16,13 +16,14 @@
 		137A5E7C250C3CD6003EAD14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 137A5E7B250C3CD6003EAD14 /* Assets.xcassets */; };
 		137A5E7F250C3CD6003EAD14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 137A5E7D250C3CD6003EAD14 /* LaunchScreen.storyboard */; };
 		137A5E8B250C45F9003EAD14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 137A5E8A250C45F9003EAD14 /* GoogleService-Info.plist */; };
+		715E1912DA98607464DA3DB5 /* Pods_pennapps_2020.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844C4D806B4F875F9ECA09A8 /* Pods_pennapps_2020.framework */; };
 		76346068250C883900A24D75 /* LobbyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76346067250C883900A24D75 /* LobbyVC.swift */; };
-		E4207E53619E53D2FB2A0AA2 /* Pods_pennapps_2020.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C50E336A03AB7018D6E42F /* Pods_pennapps_2020.framework */; };
 		E810E093250C9A6B00942D72 /* LobbyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E810E091250C9A6B00942D72 /* LobbyViewModel.swift */; };
 		E810E094250C9A6B00942D72 /* LobbyPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E810E092250C9A6B00942D72 /* LobbyPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C0DE1AD44224BCAF2482FAD /* Pods-pennapps-2020.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pennapps-2020.debug.xcconfig"; path = "Target Support Files/Pods-pennapps-2020/Pods-pennapps-2020.debug.xcconfig"; sourceTree = "<group>"; };
 		13052710250C6AD200529A64 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		13052712250C6AF300529A64 /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
 		137A5E6F250C3CD4003EAD14 /* pennapps-2020.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pennapps-2020.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,10 +35,9 @@
 		137A5E7E250C3CD6003EAD14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		137A5E80250C3CD6003EAD14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		137A5E8A250C45F9003EAD14 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		28C50E336A03AB7018D6E42F /* Pods_pennapps_2020.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pennapps_2020.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76346067250C883900A24D75 /* LobbyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyVC.swift; sourceTree = "<group>"; };
-		D559E394BB9556A34BCA09F2 /* Pods-pennapps-2020.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pennapps-2020.debug.xcconfig"; path = "Target Support Files/Pods-pennapps-2020/Pods-pennapps-2020.debug.xcconfig"; sourceTree = "<group>"; };
-		DFAE6BD75A961335F709C8BA /* Pods-pennapps-2020.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pennapps-2020.release.xcconfig"; path = "Target Support Files/Pods-pennapps-2020/Pods-pennapps-2020.release.xcconfig"; sourceTree = "<group>"; };
+		844C4D806B4F875F9ECA09A8 /* Pods_pennapps_2020.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pennapps_2020.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAC17A8D30BF73C28BB1FAD7 /* Pods-pennapps-2020.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pennapps-2020.release.xcconfig"; path = "Target Support Files/Pods-pennapps-2020/Pods-pennapps-2020.release.xcconfig"; sourceTree = "<group>"; };
 		E810E091250C9A6B00942D72 /* LobbyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewModel.swift; sourceTree = "<group>"; };
 		E810E092250C9A6B00942D72 /* LobbyPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -47,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4207E53619E53D2FB2A0AA2 /* Pods_pennapps_2020.framework in Frameworks */,
+				715E1912DA98607464DA3DB5 /* Pods_pennapps_2020.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,7 +60,7 @@
 				137A5E71250C3CD4003EAD14 /* pennapps-2020 */,
 				137A5E70250C3CD4003EAD14 /* Products */,
 				9C7443281B792A62262A04E8 /* Pods */,
-				F9E13F619479F97C1E48FFCF /* Frameworks */,
+				FAD95877A41D0F43225AFC9D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,16 +103,16 @@
 		9C7443281B792A62262A04E8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D559E394BB9556A34BCA09F2 /* Pods-pennapps-2020.debug.xcconfig */,
-				DFAE6BD75A961335F709C8BA /* Pods-pennapps-2020.release.xcconfig */,
+				0C0DE1AD44224BCAF2482FAD /* Pods-pennapps-2020.debug.xcconfig */,
+				DAC17A8D30BF73C28BB1FAD7 /* Pods-pennapps-2020.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		F9E13F619479F97C1E48FFCF /* Frameworks */ = {
+		FAD95877A41D0F43225AFC9D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				28C50E336A03AB7018D6E42F /* Pods_pennapps_2020.framework */,
+				844C4D806B4F875F9ECA09A8 /* Pods_pennapps_2020.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -124,11 +124,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 137A5E83250C3CD6003EAD14 /* Build configuration list for PBXNativeTarget "pennapps-2020" */;
 			buildPhases = (
-				063375F933DB594FE33CE2BA /* [CP] Check Pods Manifest.lock */,
+				B2295DE6DEFDAA6490C9F55F /* [CP] Check Pods Manifest.lock */,
 				137A5E6B250C3CD4003EAD14 /* Sources */,
 				137A5E6C250C3CD4003EAD14 /* Frameworks */,
 				137A5E6D250C3CD4003EAD14 /* Resources */,
-				02B07C7ADA006E55775E3C56 /* [CP] Embed Pods Frameworks */,
+				C7759139A11FD2165D04AF28 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -187,24 +187,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		02B07C7ADA006E55775E3C56 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-pennapps-2020/Pods-pennapps-2020-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-pennapps-2020/Pods-pennapps-2020-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-pennapps-2020/Pods-pennapps-2020-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		063375F933DB594FE33CE2BA /* [CP] Check Pods Manifest.lock */ = {
+		B2295DE6DEFDAA6490C9F55F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -224,6 +207,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C7759139A11FD2165D04AF28 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-pennapps-2020/Pods-pennapps-2020-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-pennapps-2020/Pods-pennapps-2020-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-pennapps-2020/Pods-pennapps-2020-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -382,7 +382,7 @@
 		};
 		137A5E84250C3CD6003EAD14 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D559E394BB9556A34BCA09F2 /* Pods-pennapps-2020.debug.xcconfig */;
+			baseConfigurationReference = 0C0DE1AD44224BCAF2482FAD /* Pods-pennapps-2020.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -403,7 +403,7 @@
 		};
 		137A5E85250C3CD6003EAD14 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DFAE6BD75A961335F709C8BA /* Pods-pennapps-2020.release.xcconfig */;
+			baseConfigurationReference = DAC17A8D30BF73C28BB1FAD7 /* Pods-pennapps-2020.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
