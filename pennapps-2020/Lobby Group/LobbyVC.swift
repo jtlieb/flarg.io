@@ -15,20 +15,25 @@ class LobbyVC: UIViewController, UITableViewDelegate {
     @IBOutlet weak var redTeamTable: UITableView!
     @IBOutlet weak var blueTeamTable: UITableView!
     
-    var ref: DatabaseReference!
     var delegate: HomeScreenVC!
-    var isHost = false
-    var roomId: String!
     var viewModel: LobbyViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.observePlayers(ref: ref) { (error, lobbyPlayers) in
+        viewModel.observePlayers(playerAddedHandler: { (error, addedPlayer) in
             if (error != nil) {
                 print(error)
-            } else {
-                print(lobbyPlayers)
+            } else if (addedPlayer != nil) {
+                self.viewModel.addLobbyPlayer(lobbyPlayer: addedPlayer!)
+                print(self.viewModel.getLobbyPlayers())
+            }
+        }) { (error, removedPlayer) in
+            if (error != nil) {
+                print(error)
+            } else if (removedPlayer != nil) {
+                self.viewModel.removeLobbyPlayer(lobbyPlayer: removedPlayer!)
+                print(self.viewModel.getLobbyPlayers())
             }
         }
     }

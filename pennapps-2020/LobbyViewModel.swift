@@ -14,33 +14,80 @@ class LobbyViewModel {
     private let WAITING_ROOMS_DB: String = "waiting_rooms"
     var ROOM_ID: String
     
-    init(roomId: String) {
+    var ref: DatabaseReference!
+    var isHost = false
+    var roomId: String!
+    
+    private var lobbyPlayers : [LobbyPlayer] = []
+    
+    init(roomId: String, ref: DatabaseReference!, isHost: Bool) {
         self.ROOM_ID = roomId
+        self.ref = ref
+        self.isHost = isHost
     }
     
-    func observePlayers(ref: DatabaseReference, handler: @escaping ((String?, [LobbyPlayer]) -> Void)) {
-        print("in observe players")
-        print(ROOM_ID)
-        
-        if (ROOM_ID == nil || ROOM_ID == "") {
-            print("room id was not valid")
-            return
+    func getLobbyPlayers() -> [LobbyPlayer] {
+        return lobbyPlayers
+    } 
+    
+    func addLobbyPlayer(lobbyPlayer: LobbyPlayer) {
+        lobbyPlayers.append(lobbyPlayer)
+    }
+    
+    func removeLobbyPlayer(lobbyPlayer: LobbyPlayer) {
+        lobbyPlayers.removeAll { (player) -> Bool in
+            player.userId == lobbyPlayer.userId
         }
         
-        print("hi")
-        
+        if (lobbyPlayers.count == 0) {
+            // remove waiting room from database
+        }
+    }
+    
+    func observePlayers(playerAddedHandler: @escaping ((String?, LobbyPlayer?) -> Void), playerRemovedHandler: @escaping ((String?, LobbyPlayer?) -> Void)) {
+                
         let roomRef = ref.child(WAITING_ROOMS_DB).child(ROOM_ID)
-        roomRef.observe(.childAdded) { (childSnapshot) in
-            ref.child(self.WAITING_ROOMS_DB).child(self.ROOM_ID).observe(.childChanged) { (snapshot) in
-                guard let data = snapshot.value as? [String: Any] else {
-                    handler("Players in this waiting room are wrong type", [])
-                    return
-                }
-                   
-                for entry in data{
-                    print(entry)
-                }
+        print(roomRef)
+
+        roomRef.observe(.childAdded) { (snapshot) in
+            print("child added")
+
+            guard let data = snapshot.value as? [String: Any] else {
+                playerAddedHandler("player added was invalid", nil)
+                return
             }
+            
+            guard let nickname = data["nickname"] as? String else {
+                playerAddedHandler("added player's nickname wasn't String", nil)
+                return
+            }
+
+            guard let team = data["team"] as? Int else {
+                playerAddedHandler("added player's team wasn't Int", nil)
+                return
+            }
+            
+            playerAddedHandler(nil, LobbyPlayer(userId: snapshot.key, nickName: nickname, team: team))
+        }
+        
+        roomRef.observe(.childRemoved) { (snapshot) in
+            print("observing removing child...")
+            guard let data = snapshot.value as? [String: Any] else {
+                playerRemovedHandler("player removed is invalid", nil)
+                return
+            }
+            
+            guard let nickname = data["nickname"] as? String else {
+                playerRemovedHandler("added player's nickname wasn't String", nil)
+                return
+            }
+
+            guard let team = data["team"] as? Int else {
+                playerRemovedHandler("added player's team wasn't Int", nil)
+                return
+            }
+            
+            playerRemovedHandler(nil, LobbyPlayer(userId: snapshot.key, nickName: nickname, team: team))
         }
     }
 }

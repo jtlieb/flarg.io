@@ -26,15 +26,14 @@ class HomeScreenVC: UIViewController, UITextFieldDelegate {
     
     // Model (data structures and stuff)
     // Firebase reference. Use to get data about rooms and update rooms
-    var ref: DatabaseReference!
-    var viewModel = HomeScreenViewModel()
+    var viewModel: HomeScreenViewModel!
 
     // Controller (all functions that manipulate the view and model
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.ref = Database.database().reference()
-//        self.ref.child("users").child("userid").setValue(["username": "hi"])
+        self.viewModel = HomeScreenViewModel(ref: Database.database().reference())
+
         roomLabel.isHidden = true
         nicknameLabel.isHidden = true
         nicknameTextField.delegate = self
@@ -68,10 +67,9 @@ class HomeScreenVC: UIViewController, UITextFieldDelegate {
         }
         
         
-        viewModel.joinWaitingRoom(ref: ref, roomId: roomId!, userId: UUID().uuidString, nickname: nickname!, handler: { errorMsg, dbRef in
+        viewModel.joinWaitingRoom(roomId: roomId!, userId: UUID().uuidString, nickname: nickname!, handler: { errorMsg, dbRef in
             if (errorMsg != nil) {
-                print(errorMsg)
-                self.notifyUser(title: "No Room", message: "This room has not been created")
+                self.notifyUser(title: "Error", message: "A room with this ID does not exist")
             } else {
                 self.roomId = roomId!
                 self.roomLabel.isHidden = true
@@ -92,32 +90,24 @@ class HomeScreenVC: UIViewController, UITextFieldDelegate {
             return
         }
         
-        viewModel.createWaitingRoom(ref: ref, userId: UUID().uuidString, nickname: nickname!, handler: { error, roomId in
+        viewModel.createWaitingRoom(userId: UUID().uuidString, nickname: nickname!, handler: { error, roomId in
             if (error != nil) {
-                print("Error creating room")
+                self.notifyUser(title: "Error", message: "There was an error creating this room")
             } else {
                 print("Successfully created room" + roomId)
                 self.roomId = roomId
                 self.performSegue(withIdentifier: "create", sender: self)
             }
         })
-        /** TODO:
-            Segue to Lobby Screen
-            Generate 6 Character Alphanumeric
-         */
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! LobbyVC
-        vc.ref = self.ref
-        vc.roomId = self.roomId
         vc.delegate = self
-        vc.isHost = segue.identifier == "create"
-        vc.viewModel = LobbyViewModel(roomId: self.roomId)
+        vc.viewModel = LobbyViewModel(roomId: self.roomId, ref: viewModel.ref, isHost: segue.identifier == "create")
     }
     
-    func notifyUser(title: String, message: String) -> Void
-    {
+    func notifyUser(title: String, message: String) -> Void {
         let alert = UIAlertController(title: title,
             message: message,
             preferredStyle: UIAlertController.Style.alert)
@@ -127,9 +117,7 @@ class HomeScreenVC: UIViewController, UITextFieldDelegate {
 
         alert.addAction(cancelAction)
         self.present(alert, animated: true)
-
     }
-
 
 }
 

@@ -9,6 +9,7 @@
 import Foundation
 
 struct LobbyPlayer {
-    var name: String
+    var userId: String
+    var nickName: String
     var team: Int
 }

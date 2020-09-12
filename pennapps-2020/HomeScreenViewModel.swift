@@ -14,6 +14,12 @@ class HomeScreenViewModel {
     private let WAITING_ROOMS_DB: String = "waiting_rooms"
     private let MAX_PARTICIPANTS: Int = 20
     
+    var ref: DatabaseReference!
+    
+    init(ref: DatabaseReference!) {
+        self.ref = ref
+    }
+    
     // check if the nickname is valid. It can't be null or empty
     func checkNotEmptyOrNull(s: String?) -> Bool {
         if (s == nil || s == "") {
@@ -23,10 +29,10 @@ class HomeScreenViewModel {
     }
     
     // creating a waiting room
-    func createWaitingRoom(ref: DatabaseReference, userId: String, nickname: String, handler: @escaping (Error?, String) -> Void) {
+    func createWaitingRoom(userId: String, nickname: String, handler: @escaping (Error?, String) -> Void) {
         var roomId: String = String.random()
     
-        while(checkIfRoomExists(ref: ref, roomId: roomId)) {
+        while(checkIfRoomExists(roomId: roomId)) {
             roomId = String.random()
         }
         let players = ["host": userId, userId : ["nickname" : nickname, "team": 0]] as [String : Any]
@@ -39,7 +45,7 @@ class HomeScreenViewModel {
     
     // TODO: THIS DOESN'T WORK
     // check if the string roomId already exists in the waiting room database
-    private func checkIfRoomExists(ref: DatabaseReference, roomId: String) -> Bool {
+    private func checkIfRoomExists(roomId: String) -> Bool {
         var exists = false
         ref.child(WAITING_ROOMS_DB + "/" + roomId).observeSingleEvent(of: .value, with: { (snapshot) in
             exists = snapshot.exists()
@@ -48,7 +54,7 @@ class HomeScreenViewModel {
     }
     
     // joining a waiting room
-    func joinWaitingRoom(ref: DatabaseReference, roomId: String, userId: String, nickname: String, handler: @escaping (String?, String) -> Void) {
+    func joinWaitingRoom(roomId: String, userId: String, nickname: String, handler: @escaping (String?, String) -> Void) {
 //        if (!checkIfRoomExists(ref: ref, roomId: roomId)) {
 //            handler("waiting room does not exist", roomId)
 //        }
@@ -70,7 +76,7 @@ class HomeScreenViewModel {
             print(numPlayers)
             if (numPlayers % 2 == 1) { team = 1 }
             newData[userId] = ["nickname" : nickname, "team": team]
-            ref.child(self.WAITING_ROOMS_DB).child(roomId).setValue(newData) { (error, dbRef) in
+            self.ref.child(self.WAITING_ROOMS_DB).child(roomId).setValue(newData) { (error, dbRef) in
                 handler(error?.localizedDescription, roomId)
                 return
             }
