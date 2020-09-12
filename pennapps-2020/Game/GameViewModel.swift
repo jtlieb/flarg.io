@@ -36,7 +36,7 @@ class GameViewModel {
     func observeGamePlayers(handler: @escaping (Error?) -> Void) {
         print("Observer Game Playersss-------------")
         print(hostId)
-        ref.child("\(self.PLAY_ROOMS_DB)/\(self.ROOM_ID)/players/\(String(describing: hostId))").observe(.childChanged) {(snapshot) in
+        ref.child("\(self.PLAY_ROOMS_DB)/\(self.ROOM_ID)/players/").observe(.childChanged) {(snapshot) in
             print("observeGamePlayers")
             print(snapshot)
         }
