@@ -66,7 +66,7 @@ class HomeScreenViewModel {
             }
             
             guard let hostId = data["host"] as? String else {
-                handler("Couldn't find host userId", roomId, nil)
+                handler("Players in this waiting room are wrong type", roomId, nil)
                 return
             }
             

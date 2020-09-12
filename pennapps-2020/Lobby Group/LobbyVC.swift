@@ -36,8 +36,8 @@ class LobbyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func leaveRoom() {
-        if let navController = self.navigationController {
-            navController.popViewController(animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
@@ -61,15 +61,16 @@ class LobbyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 self.reloadTables()
             }
         }) { (error, removedPlayer) in
-            if (error != nil) {
+            if error != nil {
                 print(error)
             } else if (removedPlayer != nil) {
-                self.viewModel.removeLobbyPlayer(userId: removedPlayer!.userId, { roomRemoved in
-                    if (roomRemoved) {
+                self.viewModel.removeLobbyPlayer(userId: removedPlayer!.userId)
+                if (self.viewModel.isEmpty()) {
+                    self.leaveRoom()
+                    if (!self.viewModel.isHost()) {
                         self.notifyUser(title: "Error", message: "Host has left and deleted this room")
-                        self.leaveRoom()
                     }
-                })
+                }
                 self.reloadTables()
             }
         }
@@ -79,14 +80,14 @@ class LobbyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewWillDisappear(animated)
 
         if self.isMovingFromParent {
-            viewModel.exitLobby { (error, dbRef) in
-                if (error != nil) {
+            viewModel.exitRoom { (error) in
+                if error != nil {
                     print("Error exiting waiting room")
                 } else {
-                    self.viewModel.removeLobbyPlayer(userId: self.viewModel.userId, { _ in })
-                    if (self.viewModel.isHost()) {
-                        self.viewModel.deleteLobby { (error2, dbRef2) in
-                            if (error != nil) {
+                    self.viewModel.removeLobbyPlayer(userId: self.viewModel.userId)
+                    if self.viewModel.isHost() {
+                        self.viewModel.eraseRoom { (error2) in
+                            if error != nil {
                                 print("Error deleting waiting room")
                             }
                         }
