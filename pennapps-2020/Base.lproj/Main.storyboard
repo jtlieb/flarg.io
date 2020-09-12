@@ -51,23 +51,43 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;Please Enter A Valid Room ID&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lx7-Jw-nvy">
+                                <rect key="frame" x="50" y="260" width="314" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;Please Enter A Valid Username&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crw-Tc-X2r">
+                                <rect key="frame" x="50" y="340" width="314" height="19"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Crw-Tc-X2r" firstAttribute="top" secondItem="3fp-WN-fc5" secondAttribute="bottom" constant="2" id="5mv-sm-DAy"/>
+                            <constraint firstItem="lx7-Jw-nvy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="5yn-V2-Vg1"/>
                             <constraint firstItem="OS2-k1-CHP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="9J2-H5-x9V"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="F8r-WS-pot" secondAttribute="trailing" constant="30" id="AW3-NL-NC9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OS2-k1-CHP" secondAttribute="trailing" constant="50" id="Co9-5o-1GV"/>
+                            <constraint firstItem="3fp-WN-fc5" firstAttribute="top" secondItem="lx7-Jw-nvy" secondAttribute="bottom" constant="7" id="M2Y-Lb-Ht9"/>
                             <constraint firstItem="LtC-vZ-DWe" firstAttribute="height" secondItem="F8r-WS-pot" secondAttribute="height" id="MW0-2q-mFE"/>
+                            <constraint firstItem="lx7-Jw-nvy" firstAttribute="top" secondItem="OS2-k1-CHP" secondAttribute="bottom" constant="2" id="Mzb-wp-bRX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Crw-Tc-X2r" secondAttribute="trailing" constant="50" id="RuD-6g-7F3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3fp-WN-fc5" secondAttribute="trailing" constant="50" id="THP-e1-Eb7"/>
                             <constraint firstItem="3fp-WN-fc5" firstAttribute="top" secondItem="OS2-k1-CHP" secondAttribute="bottom" constant="30" id="cbZ-fW-4eU"/>
                             <constraint firstItem="LtC-vZ-DWe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="cfc-z0-1ub"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lx7-Jw-nvy" secondAttribute="trailing" constant="50" id="h5l-Lw-D9N"/>
                             <constraint firstItem="F8r-WS-pot" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="iKg-Ps-qUH"/>
                             <constraint firstItem="3fp-WN-fc5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="kAS-ey-bZI"/>
                             <constraint firstItem="OS2-k1-CHP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="120" id="nUc-u8-NlI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="F8r-WS-pot" secondAttribute="bottom" constant="30" id="nzZ-Rv-Ykg"/>
                             <constraint firstItem="LtC-vZ-DWe" firstAttribute="top" secondItem="3fp-WN-fc5" secondAttribute="bottom" constant="50" id="qYt-m5-zne"/>
                             <constraint firstItem="F8r-WS-pot" firstAttribute="top" secondItem="LtC-vZ-DWe" secondAttribute="bottom" constant="30" id="sn0-or-FIT"/>
+                            <constraint firstItem="Crw-Tc-X2r" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="szH-lG-nYr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LtC-vZ-DWe" secondAttribute="trailing" constant="30" id="us4-4C-vRJ"/>
+                            <constraint firstItem="LtC-vZ-DWe" firstAttribute="top" secondItem="Crw-Tc-X2r" secondAttribute="bottom" constant="29" id="v3s-c0-gsM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -75,8 +95,10 @@
                     <connections>
                         <outlet property="createButton" destination="F8r-WS-pot" id="lc4-V9-Xgf"/>
                         <outlet property="joinButton" destination="LtC-vZ-DWe" id="Tyo-q3-rLR"/>
+                        <outlet property="nicknameLabel" destination="Crw-Tc-X2r" id="9ke-i3-Tha"/>
                         <outlet property="nicknameTextField" destination="3fp-WN-fc5" id="h3j-52-Awp"/>
                         <outlet property="roomIdField" destination="OS2-k1-CHP" id="72x-T4-SNe"/>
+                        <outlet property="roomLabel" destination="lx7-Jw-nvy" id="tNk-LT-89f"/>
                         <segue destination="gMK-Mn-sTv" kind="show" identifier="join" id="Mne-Uq-qgv"/>
                         <segue destination="gsV-IL-6h3" kind="show" identifier="create" id="hKQ-gp-ONl"/>
                     </connections>
