@@ -42,9 +42,15 @@ class HomeScreenVC: UIViewController, UITextFieldDelegate {
         roomIdField.delegate = self
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        textField.text = textField.text?.uppercased()
+        return textField.text!.count + string.count <= 6
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         nicknameTextField.resignFirstResponder()
         roomIdField.resignFirstResponder()
+        roomIdField.text = roomIdField.text?.uppercased()
         return true
     }
     
@@ -118,6 +124,7 @@ class HomeScreenVC: UIViewController, UITextFieldDelegate {
         vc.delegate = self
         vc.viewModel = LobbyViewModel(roomId: self.roomId, ref: viewModel.ref, userId: self.userId, hostId: self.hostId)
     }
+    
     
 //    func notifyUser(title: String, message: String) -> Void {
 //        let alert = UIAlertController(title: title,
