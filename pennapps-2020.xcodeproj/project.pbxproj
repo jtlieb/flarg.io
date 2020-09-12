@@ -19,6 +19,7 @@
 		13AC1041250CC122003512FA /* LobbyPlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC1040250CC122003512FA /* LobbyPlayerTableViewCell.swift */; };
 		715E1912DA98607464DA3DB5 /* Pods_pennapps_2020.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844C4D806B4F875F9ECA09A8 /* Pods_pennapps_2020.framework */; };
 		76346068250C883900A24D75 /* LobbyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76346067250C883900A24D75 /* LobbyVC.swift */; };
+		7634606E250D1DAE00A24D75 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7634606D250D1DAE00A24D75 /* GameVC.swift */; };
 		E810E093250C9A6B00942D72 /* LobbyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E810E091250C9A6B00942D72 /* LobbyViewModel.swift */; };
 		E810E094250C9A6B00942D72 /* LobbyPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E810E092250C9A6B00942D72 /* LobbyPlayer.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 		137A5E8A250C45F9003EAD14 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		13AC1040250CC122003512FA /* LobbyPlayerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyPlayerTableViewCell.swift; sourceTree = "<group>"; };
 		76346067250C883900A24D75 /* LobbyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyVC.swift; sourceTree = "<group>"; };
+		7634606D250D1DAE00A24D75 /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
 		844C4D806B4F875F9ECA09A8 /* Pods_pennapps_2020.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pennapps_2020.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAC17A8D30BF73C28BB1FAD7 /* Pods-pennapps-2020.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pennapps-2020.release.xcconfig"; path = "Target Support Files/Pods-pennapps-2020/Pods-pennapps-2020.release.xcconfig"; sourceTree = "<group>"; };
 		E810E091250C9A6B00942D72 /* LobbyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewModel.swift; sourceTree = "<group>"; };
@@ -77,30 +79,47 @@
 		137A5E71250C3CD4003EAD14 /* pennapps-2020 */ = {
 			isa = PBXGroup;
 			children = (
-				76346066250C882700A24D75 /* Lobby Group */,
+				7634606A250D1D5400A24D75 /* Game */,
+				76346069250D1D1600A24D75 /* HomeScreen */,
+				76346066250C882700A24D75 /* Lobby */,
 				137A5E72250C3CD4003EAD14 /* AppDelegate.swift */,
 				137A5E74250C3CD4003EAD14 /* SceneDelegate.swift */,
-				137A5E76250C3CD4003EAD14 /* HomeScreenVC.swift */,
 				137A5E78250C3CD4003EAD14 /* Main.storyboard */,
-				E810E092250C9A6B00942D72 /* LobbyPlayer.swift */,
-				E810E091250C9A6B00942D72 /* LobbyViewModel.swift */,
 				137A5E7B250C3CD6003EAD14 /* Assets.xcassets */,
 				137A5E7D250C3CD6003EAD14 /* LaunchScreen.storyboard */,
 				137A5E80250C3CD6003EAD14 /* Info.plist */,
 				137A5E8A250C45F9003EAD14 /* GoogleService-Info.plist */,
 				13052710250C6AD200529A64 /* Extensions.swift */,
-				13052712250C6AF300529A64 /* HomeScreenViewModel.swift */,
 			);
 			path = "pennapps-2020";
 			sourceTree = "<group>";
 		};
-		76346066250C882700A24D75 /* Lobby Group */ = {
+		76346066250C882700A24D75 /* Lobby */ = {
 			isa = PBXGroup;
 			children = (
-				13AC1040250CC122003512FA /* LobbyPlayerTableViewCell.swift */,
 				76346067250C883900A24D75 /* LobbyVC.swift */,
+				13AC1040250CC122003512FA /* LobbyPlayerTableViewCell.swift */,
+				E810E091250C9A6B00942D72 /* LobbyViewModel.swift */,
+				E810E092250C9A6B00942D72 /* LobbyPlayer.swift */,
 			);
-			path = "Lobby Group";
+			path = Lobby;
+			sourceTree = "<group>";
+		};
+		76346069250D1D1600A24D75 /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				137A5E76250C3CD4003EAD14 /* HomeScreenVC.swift */,
+				13052712250C6AF300529A64 /* HomeScreenViewModel.swift */,
+			);
+			path = HomeScreen;
+			sourceTree = "<group>";
+		};
+		7634606A250D1D5400A24D75 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				7634606D250D1DAE00A24D75 /* GameVC.swift */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 		9C7443281B792A62262A04E8 /* Pods */ = {
@@ -244,6 +263,7 @@
 				13052713250C6AF300529A64 /* HomeScreenViewModel.swift in Sources */,
 				E810E094250C9A6B00942D72 /* LobbyPlayer.swift in Sources */,
 				13AC1041250CC122003512FA /* LobbyPlayerTableViewCell.swift in Sources */,
+				7634606E250D1DAE00A24D75 /* GameVC.swift in Sources */,
 				76346068250C883900A24D75 /* LobbyVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
