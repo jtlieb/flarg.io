@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class HomeScreenVC: UIViewController {
+class HomeScreenVC: UIViewController, UITextFieldDelegate {
     
     // On-Screen Components (buttons, labels, text boxes, etc)
     @IBOutlet var joinButton: UIButton!
@@ -37,6 +37,14 @@ class HomeScreenVC: UIViewController {
 //        self.ref.child("users").child("userid").setValue(["username": "hi"])
         roomLabel.isHidden = true
         nicknameLabel.isHidden = true
+        nicknameTextField.delegate = self
+        roomIdField.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nicknameTextField.resignFirstResponder()
+        roomIdField.resignFirstResponder()
+        return true
     }
     
     @IBAction func joinPressed(sender: Any) {
