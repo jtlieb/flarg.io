@@ -22,7 +22,7 @@ class GameVC: UIViewController, ARSCNViewDelegate {
     let config = ARWorldTrackingConfiguration()
     
     var delegate: LobbyVC!
-    var gamePlayers: [GamePlayer]!
+    var viewModel: GameViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +30,6 @@ class GameVC: UIViewController, ARSCNViewDelegate {
         arView.delegate = self
         arView.session.run(config)
         arView.session.delegate = self
-        
-        print("game players: ")
-        print(gamePlayers)
     }
     
 }
@@ -46,6 +43,12 @@ extension GameVC: ARSessionDelegate {
         self.xPos.text = "\(pos.x)"
         self.yPos.text = "\(pos.y)"
         self.zPos.text = "\(pos.z)"
+        viewModel.updatePosition(userId: viewModel.userId, x: pos.x, z: pos.z) { (error) in
+            if error != nil {
+                print(error)
+            }
+        }
+        
        
     }
 }
