@@ -31,7 +31,7 @@ extension GameVC: ARSessionDelegate {
 
     func session(_ session: ARSession, didUpdate currentFrame: ARFrame) {
         let transform = currentFrame.camera.transform
-        print(transform)
+        dump(transform)
         print("Updates")                               // UPDATING
     }
 }
