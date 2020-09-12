@@ -15,6 +15,7 @@ class HomeScreenVC: UIViewController {
     @IBOutlet var joinButton: UIButton!
     @IBOutlet var createButton: UIButton!
     @IBOutlet weak var nicknameTextField: UITextField!
+    @IBOutlet weak var roomIDField: UITextField!
     
     var evenNumJoinPressed = true
     
