@@ -49,9 +49,9 @@ class HomeScreenViewModel {
     
     // joining a waiting room
     func joinWaitingRoom(ref: DatabaseReference, roomId: String, userId: String, nickname: String, handler: @escaping (String?, String) -> Void) {
-        if (!checkIfRoomExists(ref: ref, roomId: roomId)) {
-            handler("waiting room does not exist", roomId)
-        }
+//        if (!checkIfRoomExists(ref: ref, roomId: roomId)) {
+//            handler("waiting room does not exist", roomId)
+//        }
         
         ref.child(WAITING_ROOMS_DB).child(roomId).observeSingleEvent(of: .value) { (snapshot) in
             guard let data = snapshot.value as? [String: Any] else {
