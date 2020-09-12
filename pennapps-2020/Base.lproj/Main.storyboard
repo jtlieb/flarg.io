@@ -227,6 +227,7 @@
                         <outlet property="blueTeamTable" destination="9BS-9u-Xms" id="kKx-we-0zi"/>
                         <outlet property="redTeamTable" destination="Jg3-Td-X8j" id="sl4-Wp-oig"/>
                         <outlet property="startButton" destination="Uuu-P2-iTW" id="6Nb-Fh-n14"/>
+                        <segue destination="A1B-gN-lRl" kind="show" identifier="start" id="wAY-hV-vUa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EeX-rp-Hdg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -288,6 +289,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="whE-R1-Km4"/>
         <segue reference="iuH-qO-jTh"/>
     </inferredMetricsTieBreakers>
 </document>
