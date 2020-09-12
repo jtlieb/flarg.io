@@ -29,7 +29,8 @@ class HomeScreenViewModel {
         while(checkIfRoomExists(ref: ref, roomId: roomId)) {
             roomId = String.random()
         }
-        let players: [String: Any] = [userId:nickname]
+        let players = ["host": userId, userId : ["nickname" : nickname, "team": 0]] as [String : Any]
+//        let players: [String: String] = [userId:nickname]
         ref.child(WAITING_ROOMS_DB).child(roomId).setValue(players) { (error, dbRef) in
             handler(error, roomId)
             return
@@ -53,19 +54,23 @@ class HomeScreenViewModel {
         }
         
         ref.child(WAITING_ROOMS_DB).child(roomId).observeSingleEvent(of: .value) { (snapshot) in
-            guard let players = snapshot.value as? [String: String] else {
+            guard let data = snapshot.value as? [String: Any] else {
                 handler("Players in this waiting room are wrong type", roomId)
                 return
             }
             
-            if (players.count == self.MAX_PARTICIPANTS) {
+            let numPlayers = data.count - 1
+            if (numPlayers == self.MAX_PARTICIPANTS) {
                 handler("The maximum number of participants has been met", roomId)
                 return
             }
             
-            var newPlayers = players
-            newPlayers[userId] = nickname
-            ref.child(self.WAITING_ROOMS_DB).child(roomId).setValue(newPlayers) { (error, dbRef) in
+            var newData = data
+            var team = 0
+            print(numPlayers)
+            if (numPlayers % 2 == 1) { team = 1 }
+            newData[userId] = ["nickname" : nickname, "team": team]
+            ref.child(self.WAITING_ROOMS_DB).child(roomId).setValue(newData) { (error, dbRef) in
                 handler(error?.localizedDescription, roomId)
                 return
             }
