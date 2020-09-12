@@ -88,6 +88,8 @@ class HomeScreenVC: UIViewController {
             if (error != nil) {
                 print("Error creating room")
             } else {
+                print("Successfully created room" + roomId)
+                self.roomId = roomId
                 self.performSegue(withIdentifier: "create", sender: self)
             }
         })
@@ -99,10 +101,11 @@ class HomeScreenVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! LobbyVC
+        vc.ref = self.ref
         vc.roomId = self.roomId
         vc.delegate = self
         vc.isHost = segue.identifier == "create"
-
+        vc.viewModel = LobbyViewModel(roomId: self.roomId)
     }
     
     func notifyUser(title: String, message: String) -> Void
