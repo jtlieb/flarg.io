@@ -15,8 +15,8 @@ class HomeScreenViewModel {
     private let MAX_PARTICIPANTS: Int = 20
     
     // check if the nickname is valid. It can't be null or empty
-    func checkIfNicknameValid(nickname: String?) -> Bool {
-        if (nickname == nil || nickname == "") {
+    func checkNotEmptyOrNull(s: String?) -> Bool {
+        if (s == nil || s == "") {
             return false
         }
         return true
