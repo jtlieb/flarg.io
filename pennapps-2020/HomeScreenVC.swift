@@ -15,7 +15,7 @@ class HomeScreenVC: UIViewController {
     @IBOutlet var joinButton: UIButton!
     @IBOutlet var createButton: UIButton!
     @IBOutlet weak var nicknameTextField: UITextField!
-    @IBOutlet weak var roomIDField: UITextField!
+    @IBOutlet weak var roomIdField: UITextField!
     
     var evenNumJoinPressed = true
     
@@ -36,12 +36,18 @@ class HomeScreenVC: UIViewController {
     @IBAction func joinPressed(sender: Any) {
         // TODO: Segue to the Join Screen\
         let nickname = nicknameTextField.text
-        if (!viewModel.checkIfNicknameValid(nickname: nickname!)) {
+        if (!viewModel.checkNotEmptyOrNull(s: nickname!)) {
             print("Invalid nickname")
             return
         }
         
-        viewModel.joinWaitingRoom(ref: ref, roomId: "1GGDGW", userId: UUID().uuidString, nickname: nickname!, handler: { errorMsg, dbRef in
+        let roomId = roomIdField.text
+        if (!viewModel.checkNotEmptyOrNull(s: roomId!)) {
+            print("Invalid roomId")
+            return
+        }
+        
+        viewModel.joinWaitingRoom(ref: ref, roomId: roomId!, userId: UUID().uuidString, nickname: nickname!, handler: { errorMsg, dbRef in
             if (errorMsg != nil) {
                 print(errorMsg)
             } else {
@@ -55,7 +61,7 @@ class HomeScreenVC: UIViewController {
         print("Create Pressed")
         
         let nickname = nicknameTextField.text
-        if (!viewModel.checkIfNicknameValid(nickname: nickname!)) {
+        if (!viewModel.checkNotEmptyOrNull(s: nickname!)) {
             print("Invalid nickname")
             return
         }
