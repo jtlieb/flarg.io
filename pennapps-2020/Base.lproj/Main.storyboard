@@ -226,6 +226,10 @@
                         <viewLayoutGuide key="safeArea" id="tJo-QP-BQa"/>
                     </view>
                     <navigationItem key="navigationItem" id="PLe-B6-r6g"/>
+                    <connections>
+                        <outlet property="blueTeamTable" destination="9BS-9u-Xms" id="kKx-we-0zi"/>
+                        <outlet property="redTeamTable" destination="Jg3-Td-X8j" id="sl4-Wp-oig"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EeX-rp-Hdg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

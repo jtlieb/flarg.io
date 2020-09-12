@@ -10,7 +10,17 @@ import Foundation
 import UIKit
 import Firebase
 
-class LobbyVC: UIViewController {
+class LobbyVC: UIViewController, UITableViewDelegate {
     
+    @IBOutlet weak var redTeamTable: UITableView!
+    @IBOutlet weak var blueTeamTable: UITableView!
+    
+    let ref = DatabaseReference()
+    var delegate: HomeScreenVC!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
     
 }
