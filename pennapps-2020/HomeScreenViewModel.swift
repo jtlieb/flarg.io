@@ -12,6 +12,7 @@ import Firebase
 class HomeScreenViewModel {
     
     private let WAITING_ROOMS_DB: String = "waiting_rooms"
+    private let MAX_PARTICIPANTS: Int = 20
     
     // check if the nickname is valid. It can't be null or empty
     func checkIfNicknameValid(nickname: String?) -> Bool {
@@ -56,6 +57,12 @@ class HomeScreenViewModel {
                 handler("Players in this waiting room are wrong type", roomId)
                 return
             }
+            
+            if (players.count == self.MAX_PARTICIPANTS) {
+                handler("The maximum number of participants has been met", roomId)
+                return
+            }
+            
             var newPlayers = players
             newPlayers[userId] = nickname
             ref.child(self.WAITING_ROOMS_DB).child(roomId).setValue(newPlayers) { (error, dbRef) in
