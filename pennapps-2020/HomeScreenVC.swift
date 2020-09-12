@@ -16,7 +16,10 @@ class HomeScreenVC: UIViewController {
     @IBOutlet var createButton: UIButton!
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var roomIdField: UITextField!
+    @IBOutlet weak var roomLabel: UILabel!
+    @IBOutlet weak var nicknameLabel: UILabel!
     
+
     var evenNumJoinPressed = true
     
     var roomId = ""
@@ -32,28 +35,40 @@ class HomeScreenVC: UIViewController {
         // Do any additional setup after loading the view.
         self.ref = Database.database().reference()
 //        self.ref.child("users").child("userid").setValue(["username": "hi"])
+        roomLabel.isHidden = true
+        nicknameLabel.isHidden = true
     }
     
     @IBAction func joinPressed(sender: Any) {
-        // TODO: Segue to the Join Screen\
-        let nickname = nicknameTextField.text
-        if (!viewModel.checkNotEmptyOrNull(s: nickname!)) {
-            print("Invalid nickname")
-            return
-        }
         
         let roomId = roomIdField.text
         if (!viewModel.checkNotEmptyOrNull(s: roomId!)) {
             print("Invalid roomId")
+            roomLabel.isHidden = false
             return
+        } else {
+            roomLabel.isHidden = true
+        }
+        // TODO: Segue to the Join Screen\
+        let nickname = nicknameTextField.text
+        if (!viewModel.checkNotEmptyOrNull(s: nickname!)) {
+            print("Invalid nickname")
+            nicknameLabel.isHidden = false
+            return
+        } else {
+            nicknameLabel.isHidden = true
         }
         
         
         viewModel.joinWaitingRoom(ref: ref, roomId: roomId!, userId: UUID().uuidString, nickname: nickname!, handler: { errorMsg, dbRef in
             if (errorMsg != nil) {
                 print(errorMsg)
+                self.notifyUser(title: "No Room", message: "This room has not been created")
             } else {
                 self.roomId = roomId!
+                self.roomLabel.isHidden = true
+                self.nicknameLabel.isHidden = true
+
                 self.performSegue(withIdentifier: "join", sender: self)
             }
         })
@@ -90,6 +105,19 @@ class HomeScreenVC: UIViewController {
 
     }
     
+    func notifyUser(title: String, message: String) -> Void
+    {
+        let alert = UIAlertController(title: title,
+            message: message,
+            preferredStyle: UIAlertController.Style.alert)
+
+        let cancelAction = UIAlertAction(title: "OK",
+            style: .cancel, handler: nil)
+
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true)
+
+    }
 
 
 }

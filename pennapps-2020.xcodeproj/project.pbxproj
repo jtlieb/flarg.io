@@ -18,6 +18,8 @@
 		137A5E8B250C45F9003EAD14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 137A5E8A250C45F9003EAD14 /* GoogleService-Info.plist */; };
 		76346068250C883900A24D75 /* LobbyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76346067250C883900A24D75 /* LobbyVC.swift */; };
 		E4207E53619E53D2FB2A0AA2 /* Pods_pennapps_2020.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C50E336A03AB7018D6E42F /* Pods_pennapps_2020.framework */; };
+		E810E093250C9A6B00942D72 /* LobbyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E810E091250C9A6B00942D72 /* LobbyViewModel.swift */; };
+		E810E094250C9A6B00942D72 /* LobbyPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E810E092250C9A6B00942D72 /* LobbyPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		76346067250C883900A24D75 /* LobbyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyVC.swift; sourceTree = "<group>"; };
 		D559E394BB9556A34BCA09F2 /* Pods-pennapps-2020.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pennapps-2020.debug.xcconfig"; path = "Target Support Files/Pods-pennapps-2020/Pods-pennapps-2020.debug.xcconfig"; sourceTree = "<group>"; };
 		DFAE6BD75A961335F709C8BA /* Pods-pennapps-2020.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pennapps-2020.release.xcconfig"; path = "Target Support Files/Pods-pennapps-2020/Pods-pennapps-2020.release.xcconfig"; sourceTree = "<group>"; };
+		E810E091250C9A6B00942D72 /* LobbyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewModel.swift; sourceTree = "<group>"; };
+		E810E092250C9A6B00942D72 /* LobbyPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,8 @@
 				137A5E74250C3CD4003EAD14 /* SceneDelegate.swift */,
 				137A5E76250C3CD4003EAD14 /* HomeScreenVC.swift */,
 				137A5E78250C3CD4003EAD14 /* Main.storyboard */,
+				E810E092250C9A6B00942D72 /* LobbyPlayer.swift */,
+				E810E091250C9A6B00942D72 /* LobbyViewModel.swift */,
 				137A5E7B250C3CD6003EAD14 /* Assets.xcassets */,
 				137A5E7D250C3CD6003EAD14 /* LaunchScreen.storyboard */,
 				137A5E80250C3CD6003EAD14 /* Info.plist */,
@@ -229,9 +235,11 @@
 			files = (
 				137A5E77250C3CD4003EAD14 /* HomeScreenVC.swift in Sources */,
 				137A5E73250C3CD4003EAD14 /* AppDelegate.swift in Sources */,
+				E810E093250C9A6B00942D72 /* LobbyViewModel.swift in Sources */,
 				137A5E75250C3CD4003EAD14 /* SceneDelegate.swift in Sources */,
 				13052711250C6AD200529A64 /* Extensions.swift in Sources */,
 				13052713250C6AF300529A64 /* HomeScreenViewModel.swift in Sources */,
+				E810E094250C9A6B00942D72 /* LobbyPlayer.swift in Sources */,
 				76346068250C883900A24D75 /* LobbyVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
