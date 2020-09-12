@@ -112,7 +112,6 @@ class HomeScreenVC: UIViewController, UITextFieldDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        // Ensures 
         guard segue.identifier != nil else { return }
         
         let vc = segue.destination as! LobbyVC
