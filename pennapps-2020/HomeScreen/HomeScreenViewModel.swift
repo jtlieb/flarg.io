@@ -71,7 +71,7 @@ class HomeScreenViewModel {
                 return
             }
             
-            let numPlayers = data.count - 1
+            let numPlayers = data.count - 2
             if (numPlayers == self.MAX_PARTICIPANTS) {
                 handler("The maximum number of participants has been met", roomId, nil)
                 return
@@ -80,7 +80,7 @@ class HomeScreenViewModel {
             var newData = data
             var team = 0
             print(numPlayers)
-            if (numPlayers % 2 == 0) { team = 1 }
+            if (numPlayers % 2 == 1) { team = 1 }
             newData[userId] = ["nickname" : nickname, "team": team]
             self.ref.child(self.WAITING_ROOMS_DB).child(roomId).setValue(newData) { (error, dbRef) in
                 handler(error?.localizedDescription, roomId, hostId)
