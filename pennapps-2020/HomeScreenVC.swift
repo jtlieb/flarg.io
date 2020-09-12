@@ -22,6 +22,7 @@ class HomeScreenVC: UIViewController {
 
     var evenNumJoinPressed = true
     
+    var roomId = ""
     
     // Model (data structures and stuff)
     // Firebase reference. Use to get data about rooms and update rooms
@@ -58,13 +59,16 @@ class HomeScreenVC: UIViewController {
             nicknameLabel.isHidden = true
         }
         
+        
         viewModel.joinWaitingRoom(ref: ref, roomId: roomId!, userId: UUID().uuidString, nickname: nickname!, handler: { errorMsg, dbRef in
             if (errorMsg != nil) {
                 print(errorMsg)
                 self.notifyUser(title: "No Room", message: "This room has not been created")
             } else {
+                self.roomId = roomId!
                 self.roomLabel.isHidden = true
                 self.nicknameLabel.isHidden = true
+
                 self.performSegue(withIdentifier: "join", sender: self)
             }
         })
@@ -80,7 +84,7 @@ class HomeScreenVC: UIViewController {
             return
         }
         
-        viewModel.createWaitingRoom(ref: ref, userId: UUID().uuidString, nickname: nickname!, handler: { error, dbRef in
+        viewModel.createWaitingRoom(ref: ref, userId: UUID().uuidString, nickname: nickname!, handler: { error, roomId in
             if (error != nil) {
                 print("Error creating room")
             } else {
@@ -94,11 +98,11 @@ class HomeScreenVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "join" {
-            let vc = segue.destination as! JoinGroupVC
-            vc.delegate = self
-            return 
-        }
+        let vc = segue.destination as! LobbyVC
+        vc.roomId = self.roomId
+        vc.delegate = self
+        vc.isHost = segue.identifier == "create"
+
     }
     
     func notifyUser(title: String, message: String) -> Void
