@@ -25,6 +25,7 @@
 		76989E13250D882A000F5948 /* PlayerWithFlagNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76989E12250D882A000F5948 /* PlayerWithFlagNode.swift */; };
 		76989E15250D88EF000F5948 /* PlayerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76989E14250D88EF000F5948 /* PlayerNode.swift */; };
 		76989E17250D8DD7000F5948 /* FieldBoundaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76989E16250D8DD7000F5948 /* FieldBoundaries.swift */; };
+		76989E1D250DB44B000F5948 /* MovePolice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76989E1C250DB44B000F5948 /* MovePolice.swift */; };
 		E810E093250C9A6B00942D72 /* LobbyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E810E091250C9A6B00942D72 /* LobbyViewModel.swift */; };
 		E810E094250C9A6B00942D72 /* LobbyPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E810E092250C9A6B00942D72 /* LobbyPlayer.swift */; };
 		E8258772C79C6AB1FD2A6394 /* Pods_pennapps_2020.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47BA84B57DF37F675E312A42 /* Pods_pennapps_2020.framework */; };
@@ -56,6 +57,7 @@
 		76989E12250D882A000F5948 /* PlayerWithFlagNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerWithFlagNode.swift; sourceTree = "<group>"; };
 		76989E14250D88EF000F5948 /* PlayerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNode.swift; sourceTree = "<group>"; };
 		76989E16250D8DD7000F5948 /* FieldBoundaries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldBoundaries.swift; sourceTree = "<group>"; };
+		76989E1C250DB44B000F5948 /* MovePolice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovePolice.swift; sourceTree = "<group>"; };
 		E810E091250C9A6B00942D72 /* LobbyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewModel.swift; sourceTree = "<group>"; };
 		E810E092250C9A6B00942D72 /* LobbyPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyPlayer.swift; sourceTree = "<group>"; };
 		FA4F6298250D5F3600653A62 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			children = (
 				137A5E76250C3CD4003EAD14 /* HomeScreenVC.swift */,
 				13052712250C6AF300529A64 /* HomeScreenViewModel.swift */,
+				76989E1C250DB44B000F5948 /* MovePolice.swift */,
 			);
 			path = HomeScreen;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				7634606E250D1DAE00A24D75 /* GameVC.swift in Sources */,
 				76989E13250D882A000F5948 /* PlayerWithFlagNode.swift in Sources */,
 				76346068250C883900A24D75 /* LobbyVC.swift in Sources */,
+				76989E1D250DB44B000F5948 /* MovePolice.swift in Sources */,
 				76989E15250D88EF000F5948 /* PlayerNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
