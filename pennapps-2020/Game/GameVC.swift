@@ -75,11 +75,44 @@ class GameVC: UIViewController, ARSCNViewDelegate {
                 print(self.viewModel.getGamePlayers())
             }
         }
-
-
-
     }
     
+    func moveAndRender() {
+        for playerID in viewModel.gamePlayers.keys {
+            
+            guard playerID != viewModel.userId else { return }
+            
+            let player = viewModel.gamePlayers[playerID]!
+
+            // Extracting node, removing it from parent, changing p
+            var node = player.node
+            player.node.removeFromParentNode()
+            player.node.position = SCNVector3(player.x, 0, player.z)
+
+            
+            // If the player has a flag, set them to be a
+            if player.hasFlag {
+                node = newPlayerWithFlagNode(team: player.team == 0 ? .red : .blue)
+                
+            } else {
+                node = newPlayerNode(team: player.team == 0 ? .red : .blue)
+            }
+            
+            node.position = player.node.position
+            viewModel.gamePlayers[playerID]!.node = node
+            
+
+            // Making sure it has the right color
+            var color = player.team == 0 ? UIColor.red : UIColor.blue
+            if !player.active { color = UIColor(named: "\(player.team == 0 ? "red" : "blue")_out")! }
+
+            color.withAlphaComponent(0.7)
+            player.node.geometry?.firstMaterial?.diffuse.contents = color
+
+            // Adding the child back
+            self.arView.scene.rootNode.addChildNode(player.node)
+        }
+    }
 }
 
 extension GameVC: ARSessionDelegate {
@@ -111,9 +144,6 @@ extension GameVC: ARSessionDelegate {
                 print(error)
             }
         }
-        
-        
-       
     }
 }
 

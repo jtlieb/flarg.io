@@ -31,14 +31,14 @@ func buildField() -> SCNNode {
     let rightBlue = newLine(team: .blue, isBackLine: false, length: COURT_LENGTH / 2)
     
     // Blue Side Safe Zone
-    let backBlueFlag = newLine(team: .blue, isBackLine: true, length: COURT_WIDTH)
-    let leftBlueFlag = newLine(team: .blue, isBackLine: false, length: SAFE_ZONE_LENGTH)
-    let rightBlueFlag = newLine(team: .blue, isBackLine: false, length: SAFE_ZONE_LENGTH)
+    let backBlueFlag = newLine(team: .red, isBackLine: true, length: COURT_WIDTH)
+    let leftBlueFlag = newLine(team: .red, isBackLine: false, length: SAFE_ZONE_LENGTH)
+    let rightBlueFlag = newLine(team: .red, isBackLine: false, length: SAFE_ZONE_LENGTH)
     
     // Red Side Safe Zone
-    let backRedFlag = newLine(team: .red, isBackLine: true, length: COURT_WIDTH)
-    let leftRedFlag = newLine(team: .red, isBackLine: false, length: SAFE_ZONE_LENGTH)
-    let rightRedFlag = newLine(team: .red, isBackLine: false, length: SAFE_ZONE_LENGTH)
+    let backRedFlag = newLine(team: .blue, isBackLine: true, length: COURT_WIDTH)
+    let leftRedFlag = newLine(team: .blue, isBackLine: false, length: SAFE_ZONE_LENGTH)
+    let rightRedFlag = newLine(team: .blue, isBackLine: false, length: SAFE_ZONE_LENGTH)
     
     
     // Neutral Lines
