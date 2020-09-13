@@ -20,6 +20,8 @@ class GameVC: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var yPos: UILabel!
     @IBOutlet weak var zPos: UILabel!
     
+    var isDemo = false
+    
     var redFlag = newFlagNode(team: .red)
     var blueFlag = newFlagNode(team: .blue)
     
@@ -70,8 +72,16 @@ extension GameVC: ARSessionDelegate {
         self.zPos.text = "\(pos.z)"
         
         
+        self.redFlag.removeFromParentNode()
+        self.redFlag.position = SCNVector3(pos.x, -pos.y, -pos.z)
+        self.arView.scene.rootNode.addChildNode(redFlag)
+        
+        guard isDemo == false else {
+            return
+        }
+        
+        // Things after here run if it's a real game
             
-        // Things that should run when in a real game
         print(viewModel.userId)
         viewModel.updatePosition(userId: viewModel.userId, x: Double(pos.x), z: Double(pos.z)) { (error) in
             if error != nil {
@@ -80,9 +90,7 @@ extension GameVC: ARSessionDelegate {
         }
         
         
-        self.redFlag.removeFromParentNode()
-        self.redFlag.position = SCNVector3(pos.x, -pos.y, -pos.z)
-        self.arView.scene.rootNode.addChildNode(redFlag)
+        
         
        
     }

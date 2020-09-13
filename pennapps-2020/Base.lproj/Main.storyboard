@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zOT-fQ-Mgr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zOT-fQ-Mgr">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -68,7 +68,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Click to demo AR"/>
                                 <connections>
-                                    <segue destination="A1B-gN-lRl" kind="show" id="whE-R1-Km4"/>
+                                    <segue destination="A1B-gN-lRl" kind="show" identifier="demo" id="whE-R1-Km4"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -316,7 +316,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wAY-hV-vUa"/>
+        <segue reference="whE-R1-Km4"/>
         <segue reference="iuH-qO-jTh"/>
     </inferredMetricsTieBreakers>
 </document>

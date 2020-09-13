@@ -118,7 +118,13 @@ class HomeScreenVC: UIViewController, UITextFieldDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard segue.identifier != nil else { return }
+        
+        // If using the demo button on the homescreen, make sure to tell the game VC
+        if segue.identifier == "demo" {
+            let vc = segue.destination as! GameVC
+            vc.isDemo = true
+            return
+        }
         
         let vc = segue.destination as! LobbyVC
         vc.delegate = self
