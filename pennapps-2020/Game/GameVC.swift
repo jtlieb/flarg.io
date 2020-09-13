@@ -16,9 +16,6 @@ class GameVC: UIViewController, ARSCNViewDelegate {
         
     
     @IBOutlet weak var arView: ARSCNView!
-    @IBOutlet weak var xPos: UILabel!
-    @IBOutlet weak var yPos: UILabel!
-    @IBOutlet weak var zPos: UILabel!
     
     @IBOutlet weak var actionButton: UIButton!
     
@@ -78,6 +75,9 @@ class GameVC: UIViewController, ARSCNViewDelegate {
         }
     }
     
+    
+    
+    
     func moveAndRender() {
         
         self.arView.scene.rootNode.enumerateChildNodes() { (node, stop) in
@@ -130,9 +130,6 @@ extension GameVC: ARSessionDelegate {
         let transform = currentFrame.camera.transform
         // UPDATING
         let pos = arView.pointOfView!.position
-        self.xPos.text = "\(pos.x)"
-        self.yPos.text = "\(pos.y)"
-        self.zPos.text = "\(pos.z)"
         
         moveAndRender()
         
