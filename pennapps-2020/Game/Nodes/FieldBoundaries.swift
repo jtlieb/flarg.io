@@ -11,6 +11,9 @@ import SceneKit
 
 let COURT_LENGTH: CGFloat = 10
 let COURT_WIDTH: CGFloat = 5
+let SAFE_ZONE_LENGTH: CGFloat = 2
+
+let FULL_COURT_LENGTH = SAFE_ZONE_LENGTH + COURT_LENGTH
 
 func buildField() -> SCNNode {
     
@@ -27,10 +30,21 @@ func buildField() -> SCNNode {
     let leftBlue = newLine(team: .blue, isBackLine: false, length: COURT_LENGTH / 2)
     let rightBlue = newLine(team: .blue, isBackLine: false, length: COURT_LENGTH / 2)
     
+    // Blue Side Safe Zone
+    let backBlueFlag = newLine(team: .blue, isBackLine: true, length: COURT_WIDTH)
+    let leftBlueFlag = newLine(team: .blue, isBackLine: false, length: SAFE_ZONE_LENGTH)
+    let rightBlueFlag = newLine(team: .blue, isBackLine: false, length: SAFE_ZONE_LENGTH)
+    
+    // Red Side Safe Zone
+    let backRedFlag = newLine(team: .red, isBackLine: true, length: COURT_WIDTH)
+    let leftRedFlag = newLine(team: .red, isBackLine: false, length: SAFE_ZONE_LENGTH)
+    let rightRedFlag = newLine(team: .red, isBackLine: false, length: SAFE_ZONE_LENGTH)
+    
+    
     // Neutral Lines
     let middleLine = newLine(team: nil, isBackLine: true, length: COURT_WIDTH)
     
-    let nodes = [backRed, leftRed, rightRed, backBlue, leftBlue, rightBlue, middleLine]
+    let nodes = [backRed, leftRed, rightRed, backBlue, leftBlue, rightBlue, middleLine, backBlueFlag, leftBlueFlag, rightBlueFlag, backRedFlag, leftRedFlag, rightRedFlag]
     
     backRed.position = SCNVector3(0, 0, -0.5 * COURT_LENGTH)
     leftRed.position = SCNVector3(-0.5 * COURT_WIDTH, 0, -0.25 * COURT_LENGTH)
@@ -41,6 +55,14 @@ func buildField() -> SCNNode {
     rightBlue.position = SCNVector3(0.5 * COURT_WIDTH, 0, 0.25 * COURT_LENGTH)
     
     middleLine.position = SCNVector3(0, 0, 0)
+    
+    backRedFlag.position = SCNVector3(0, 0, -0.5 * COURT_LENGTH - SAFE_ZONE_LENGTH)
+    leftRedFlag.position = SCNVector3(-0.5 * COURT_WIDTH, 0, -0.5 * (COURT_LENGTH + SAFE_ZONE_LENGTH))
+    rightRedFlag.position = SCNVector3(0.5 * COURT_WIDTH, 0, -0.5 * (COURT_LENGTH + SAFE_ZONE_LENGTH))
+    
+    backBlueFlag.position = SCNVector3(0, 0, 0.5 * COURT_LENGTH + SAFE_ZONE_LENGTH)
+    leftBlueFlag.position = SCNVector3(-0.5 * COURT_WIDTH, 0, 0.5 * ( COURT_LENGTH + SAFE_ZONE_LENGTH))
+    rightBlueFlag.position = SCNVector3(0.5 * COURT_WIDTH, 0, 0.5 * ( COURT_LENGTH + SAFE_ZONE_LENGTH))
     
     for node in nodes {
         field.addChildNode(node)

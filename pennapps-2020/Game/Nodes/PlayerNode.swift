@@ -24,7 +24,6 @@ func newPlayerNode(team: Team) -> SCNNode {
     head.geometry?.firstMaterial?.diffuse.contents = team == .red ? UIColor.red : UIColor.blue
     head.position = SCNVector3(0, 02, 0)
     
-    
     player.addChildNode(body)
     player.addChildNode(head)
     
