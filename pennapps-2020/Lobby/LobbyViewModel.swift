@@ -73,7 +73,7 @@ class LobbyViewModel {
             let hasFlag = data["hasFlag"] as! Bool
             let x = data["x"] as! Double
             let z = data["z"] as! Double
-            let gamePlayer = GamePlayer(userId: userId, nickname: nickname, team: team, active: active, x: x, z: z, hasFlag: hasFlag)
+            let gamePlayer = GamePlayer(userId: userId, nickname: nickname, team: team, active: active, x: x, z: z, hasFlag: hasFlag, node: newPlayerNode(team: team == 0 ? .red : .blue))
             
             self.gamePlayers.append(gamePlayer)
             handler(nil, self.gamePlayers.count == self.lobbyPlayers.count)
@@ -176,7 +176,7 @@ class LobbyViewModel {
             return
         }
         
-        let gamePlayer = GamePlayer(userId: lobbyPlayer!.userId, nickname: lobbyPlayer!.nickName, team: lobbyPlayer!.team, active: true, x: 0, z: 0, hasFlag: false)
+        let gamePlayer = GamePlayer(userId: lobbyPlayer!.userId, nickname: lobbyPlayer!.nickName, team: lobbyPlayer!.team, active: true, x: 0, z: 0, hasFlag: false, node: newPlayerNode(team: lobbyPlayer!.team == 0 ? .red : .blue))
         let data: [String: Any] = ["players": [gamePlayer.userId: ["nickname": gamePlayer.nickname, "team": gamePlayer.team, "active": gamePlayer.active, "x": gamePlayer.x, "z": gamePlayer.z, "hasFlag": gamePlayer.hasFlag]]]
         ref.child(FLAG_ROOMS_DB).child(ROOM_ID).setValue(data) { (error, dbRef) in
             if error != nil {
@@ -211,7 +211,7 @@ class LobbyViewModel {
             return
         }
         
-        let gamePlayer = GamePlayer(userId: lobbyPlayer!.userId, nickname: lobbyPlayer!.nickName, team: lobbyPlayer!.team, active: true, x: 0, z: 0, hasFlag: false)
+        let gamePlayer = GamePlayer(userId: lobbyPlayer!.userId, nickname: lobbyPlayer!.nickName, team: lobbyPlayer!.team, active: true, x: 0, z: 0, hasFlag: false, node: newPlayerNode(team: lobbyPlayer!.team == 0 ? .red : .blue))
         let data: [String: Any] =  ["nickname": gamePlayer.nickname, "team": gamePlayer.team, "active": gamePlayer.active, "x": gamePlayer.x, "z": gamePlayer.z, "hasFlag": gamePlayer.hasFlag]
         
         ref.child(FLAG_ROOMS_DB).child(ROOM_ID).child("players").child(userId).setValue(data) { (error, dbRef) in

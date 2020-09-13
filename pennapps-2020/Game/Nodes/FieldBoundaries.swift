@@ -9,9 +9,9 @@
 import Foundation
 import SceneKit
 
-let COURT_LENGTH: CGFloat = 10
-let COURT_WIDTH: CGFloat = 5
-let SAFE_ZONE_LENGTH: CGFloat = 2
+let COURT_LENGTH: Float = 10
+let COURT_WIDTH: Float = 5
+let SAFE_ZONE_LENGTH: Float = 2
 
 let FULL_COURT_LENGTH = SAFE_ZONE_LENGTH + COURT_LENGTH
 
@@ -77,12 +77,12 @@ func buildField() -> SCNNode {
     
 }
 
-func newLine(team: Team?, isBackLine: Bool, length: CGFloat) -> SCNNode {
+func newLine(team: Team?, isBackLine: Bool, length: Float) -> SCNNode {
     
     let line = SCNNode()
     let width = isBackLine ? length : 0.1
     let lengthParam = isBackLine ? 0.1 : length
-    line.geometry = SCNBox(width: width , height: 0.1, length: lengthParam, chamferRadius: 0)
+    line.geometry = SCNBox(width: CGFloat(width) , height: 0.1, length: CGFloat(lengthParam), chamferRadius: 0)
     
     guard let team = team else {
         line.geometry?.firstMaterial?.diffuse.contents = UIColor.green

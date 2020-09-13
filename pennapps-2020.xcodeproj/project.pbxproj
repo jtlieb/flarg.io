@@ -19,14 +19,13 @@
 		13AC1041250CC122003512FA /* LobbyPlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC1040250CC122003512FA /* LobbyPlayerTableViewCell.swift */; };
 		76346068250C883900A24D75 /* LobbyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76346067250C883900A24D75 /* LobbyVC.swift */; };
 		7634606E250D1DAE00A24D75 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7634606D250D1DAE00A24D75 /* GameVC.swift */; };
-		76989E0A250D65B7000F5948 /* Flargio.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 76989E09250D65B7000F5948 /* Flargio.scnassets */; };
 		76989E0A250D65B7000F5948 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 76989E09250D65B7000F5948 /* art.scnassets */; };
-		76989E0E250D6BA3000F5948 /* GamePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76989E0D250D6BA3000F5948 /* GamePlayer.swift */; };
 		76989E11250D85AC000F5948 /* FlagNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76989E10250D85AC000F5948 /* FlagNode.swift */; };
 		76989E13250D882A000F5948 /* PlayerWithFlagNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76989E12250D882A000F5948 /* PlayerWithFlagNode.swift */; };
 		76989E15250D88EF000F5948 /* PlayerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76989E14250D88EF000F5948 /* PlayerNode.swift */; };
 		76989E17250D8DD7000F5948 /* FieldBoundaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76989E16250D8DD7000F5948 /* FieldBoundaries.swift */; };
 		76989E1D250DB44B000F5948 /* MovePolice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76989E1C250DB44B000F5948 /* MovePolice.swift */; };
+		76989E1F250DE76E000F5948 /* GamePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76989E1E250DE76E000F5948 /* GamePlayer.swift */; };
 		E810E093250C9A6B00942D72 /* LobbyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E810E091250C9A6B00942D72 /* LobbyViewModel.swift */; };
 		E810E094250C9A6B00942D72 /* LobbyPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E810E092250C9A6B00942D72 /* LobbyPlayer.swift */; };
 		E8258772C79C6AB1FD2A6394 /* Pods_pennapps_2020.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47BA84B57DF37F675E312A42 /* Pods_pennapps_2020.framework */; };
@@ -51,15 +50,13 @@
 		54C428A97DB3A55B6DE43E7F /* Pods-pennapps-2020.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pennapps-2020.debug.xcconfig"; path = "Target Support Files/Pods-pennapps-2020/Pods-pennapps-2020.debug.xcconfig"; sourceTree = "<group>"; };
 		76346067250C883900A24D75 /* LobbyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyVC.swift; sourceTree = "<group>"; };
 		7634606D250D1DAE00A24D75 /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
-		76989E06250D6557000F5948 /* GamePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePlayer.swift; sourceTree = "<group>"; };
-		76989E09250D65B7000F5948 /* Flargio.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = Flargio.scnassets; sourceTree = "<group>"; };
 		76989E09250D65B7000F5948 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		76989E0D250D6BA3000F5948 /* GamePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GamePlayer.swift; path = "/Users/justinlieb/Documents/College/PennApps2020/pennapps-2020/Game/GamePlayer.swift"; sourceTree = "<absolute>"; };
 		76989E10250D85AC000F5948 /* FlagNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagNode.swift; sourceTree = "<group>"; };
 		76989E12250D882A000F5948 /* PlayerWithFlagNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerWithFlagNode.swift; sourceTree = "<group>"; };
 		76989E14250D88EF000F5948 /* PlayerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNode.swift; sourceTree = "<group>"; };
 		76989E16250D8DD7000F5948 /* FieldBoundaries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldBoundaries.swift; sourceTree = "<group>"; };
 		76989E1C250DB44B000F5948 /* MovePolice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovePolice.swift; sourceTree = "<group>"; };
+		76989E1E250DE76E000F5948 /* GamePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePlayer.swift; sourceTree = "<group>"; };
 		E810E091250C9A6B00942D72 /* LobbyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewModel.swift; sourceTree = "<group>"; };
 		E810E092250C9A6B00942D72 /* LobbyPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyPlayer.swift; sourceTree = "<group>"; };
 		FA4F6298250D5F3600653A62 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
@@ -84,7 +81,6 @@
 				137A5E70250C3CD4003EAD14 /* Products */,
 				9C7443281B792A62262A04E8 /* Pods */,
 				7058A40AFAA52444D88DF6C3 /* Frameworks */,
-				FA4F629D250D74CB00653A62 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,7 +146,7 @@
 				76989E0F250D8599000F5948 /* Nodes */,
 				7634606D250D1DAE00A24D75 /* GameVC.swift */,
 				FA4F6298250D5F3600653A62 /* GameViewModel.swift */,
-				FA4F629A250D646600653A62 /* GamePlayer.swift */,
+				76989E1E250DE76E000F5948 /* GamePlayer.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -161,14 +157,6 @@
 				137A5E7B250C3CD6003EAD14 /* Assets.xcassets */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		76989E0C250D6B52000F5948 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				76989E06250D6557000F5948 /* GamePlayer.swift */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		76989E0F250D8599000F5948 /* Nodes */ = {
@@ -189,14 +177,6 @@
 				544A82689B452E3DD85FDCCB /* Pods-pennapps-2020.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		FA4F629D250D74CB00653A62 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				76989E06250D6557000F5948 /* GamePlayer.swift */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,9 +302,9 @@
 				E810E093250C9A6B00942D72 /* LobbyViewModel.swift in Sources */,
 				FA4F6299250D5F3600653A62 /* GameViewModel.swift in Sources */,
 				137A5E75250C3CD4003EAD14 /* SceneDelegate.swift in Sources */,
+				76989E1F250DE76E000F5948 /* GamePlayer.swift in Sources */,
 				13052711250C6AD200529A64 /* Extensions.swift in Sources */,
 				76989E11250D85AC000F5948 /* FlagNode.swift in Sources */,
-				76989E0E250D6BA3000F5948 /* GamePlayer.swift in Sources */,
 				13052713250C6AF300529A64 /* HomeScreenViewModel.swift in Sources */,
 				E810E094250C9A6B00942D72 /* LobbyPlayer.swift in Sources */,
 				13AC1041250CC122003512FA /* LobbyPlayerTableViewCell.swift in Sources */,
@@ -463,7 +443,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
-
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

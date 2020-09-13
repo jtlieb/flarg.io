@@ -287,18 +287,32 @@
                                 <color key="textColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mg5-Cb-sZc">
+                                <rect key="frame" x="20" y="742" width="374" height="100"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="wbr-tJ-2nT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="ACTION!"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="UWP-rT-psD" firstAttribute="top" secondItem="DP8-ON-uKY" secondAttribute="top" id="6IF-JS-QFi"/>
                             <constraint firstItem="DP8-ON-uKY" firstAttribute="bottom" secondItem="UWP-rT-psD" secondAttribute="bottom" id="C27-p6-Kgq"/>
+                            <constraint firstItem="Mg5-Cb-sZc" firstAttribute="leading" secondItem="DP8-ON-uKY" secondAttribute="leading" constant="20" id="KIE-eb-XLb"/>
                             <constraint firstItem="UWP-rT-psD" firstAttribute="leading" secondItem="DP8-ON-uKY" secondAttribute="leading" id="KK5-wF-bUk"/>
+                            <constraint firstItem="DP8-ON-uKY" firstAttribute="trailing" secondItem="Mg5-Cb-sZc" secondAttribute="trailing" constant="20" id="V6A-qG-j9K"/>
+                            <constraint firstItem="DP8-ON-uKY" firstAttribute="bottom" secondItem="Mg5-Cb-sZc" secondAttribute="bottom" constant="20" id="f29-uu-pou"/>
                             <constraint firstItem="DP8-ON-uKY" firstAttribute="trailing" secondItem="UWP-rT-psD" secondAttribute="trailing" id="hac-AY-Kyi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DP8-ON-uKY"/>
                     </view>
                     <navigationItem key="navigationItem" id="HRn-Nb-E73"/>
                     <connections>
+                        <outlet property="actionButton" destination="Mg5-Cb-sZc" id="B6W-7R-fvm"/>
                         <outlet property="arView" destination="UWP-rT-psD" id="dA8-rR-hKe"/>
                         <outlet property="xPos" destination="JtY-XO-yMs" id="sNR-UU-PeP"/>
                         <outlet property="yPos" destination="oJm-xf-k5s" id="v96-x2-58r"/>
