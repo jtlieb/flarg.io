@@ -78,12 +78,27 @@ class GameVC: UIViewController, ARSCNViewDelegate {
     }
     
     func moveAndRender() {
-        for player in viewModel.gamePlayers.values {
+        for playerID in viewModel.gamePlayers.keys {
+            
+            let player = viewModel.gamePlayers[playerID]!
 
             // Extracting node, removing it from parent, changing p
-            let node = player.node
+            var node = player.node
             player.node.removeFromParentNode()
             player.node.position = SCNVector3(player.x, 0, player.z)
+
+            
+            // If the player has a flag, set them to be a
+            if player.hasFlag {
+                node = newPlayerWithFlagNode(team: player.team == 0 ? .red : .blue)
+                
+            } else {
+                node = newPlayerNode(team: player.team == 0 ? .red : .blue)
+            }
+            
+            node.position = player.node.position
+            viewModel.gamePlayers[playerID]!.node = node
+            
 
             // Making sure it has the right color
             var color = player.team == 0 ? UIColor.red : UIColor.blue
