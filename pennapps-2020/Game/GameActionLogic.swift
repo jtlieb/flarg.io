@@ -31,13 +31,28 @@ extension GameViewModel {
     }
     
     private func captureFlag(userGamePlayer: GamePlayer, handler: @escaping (String) -> Void) {
-        ref.child(PLAY_ROOMS_DB).child(ROOM_ID).child("players").child(userGamePlayer.userId).child("hasFlag").setValue(true) { (error, dbRef) in
-            if error != nil {
-                handler("Failed to pick up the flag!")
-            } else {
-                handler("You are holding the flag!")
+        
+        let teamFlagString = userGamePlayer.team == 0 ? "redFlagAvailable" : "blueFlagAvailable"
+        ref.child(PLAY_ROOMS_DB).child(ROOM_ID).child(teamFlagString).observeSingleEvent(of: .value) { (snapshot) in
+            guard let flagAvailable = snapshot.value as? Bool else {
+                handler("flag available was not boolean")
+                return
             }
+            
+            if flagAvailable {
+                self.ref.child(self.PLAY_ROOMS_DB).child(self.ROOM_ID).child("players").child(userGamePlayer.userId).child("hasFlag").setValue(true) { (error, dbRef) in
+                    if error != nil {
+                        handler("Failed to pick up the flag!")
+                    } else {
+                        handler("You are holding the flag!")
+                    }
+                }
+            } else {
+                handler("Some else is holding the flag!")
+            }
+            
         }
+        
     }
     
     private func tagClosestOpponentInRadius(userGamePlayer: GamePlayer, handler: @escaping (String) -> Void) {

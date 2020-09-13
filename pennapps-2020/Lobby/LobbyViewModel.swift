@@ -177,7 +177,7 @@ class LobbyViewModel {
         }
         
         let gamePlayer = GamePlayer(userId: lobbyPlayer!.userId, nickname: lobbyPlayer!.nickName, team: lobbyPlayer!.team, active: true, x: 0, z: 0, hasFlag: false, node: newPlayerNode(team: lobbyPlayer!.team == 0 ? .red : .blue))
-        let data: [String: Any] = ["players": [gamePlayer.userId: ["nickname": gamePlayer.nickname, "team": gamePlayer.team, "active": gamePlayer.active, "x": gamePlayer.x, "z": gamePlayer.z, "hasFlag": gamePlayer.hasFlag]]]
+        let data: [String: Any] = ["redFlagAvailable": true, "blueFlagAvailable": true, "players": [gamePlayer.userId: ["nickname": gamePlayer.nickname, "team": gamePlayer.team, "active": gamePlayer.active, "x": gamePlayer.x, "z": gamePlayer.z, "hasFlag": gamePlayer.hasFlag]]]
         ref.child(FLAG_ROOMS_DB).child(ROOM_ID).setValue(data) { (error, dbRef) in
             if error != nil {
                 handler(error?.localizedDescription, nil)
