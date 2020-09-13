@@ -26,7 +26,7 @@ extension GameViewModel {
         if userGamePlayer.isInFlagZone() {
             captureFlag(userGamePlayer: userGamePlayer, handler: handler)
         } else {
-            tagClosestPlayerInRadius(userGamePlayer: userGamePlayer, handler: handler)
+            tagClosestOpponentInRadius(userGamePlayer: userGamePlayer, handler: handler)
         }
     }
     
@@ -40,30 +40,37 @@ extension GameViewModel {
         }
     }
     
-    private func tagClosestPlayerInRadius(userGamePlayer: GamePlayer, handler: @escaping (String) -> Void) {
+    private func tagClosestOpponentInRadius(userGamePlayer: GamePlayer, handler: @escaping (String) -> Void) {
         
+        let userTeam = userGamePlayer.team
         var minDist: Double = Double(INT_MAX)
-        var closestGamePlayer: GamePlayer!
+        var closestOpponent: GamePlayer? = nil
         for entry in gamePlayers {
-            if entry.key != userId {
-                let dist = userGamePlayer.radialDistanceFrom(otherGamePlayer: entry.value)
+            let gamePlayer = entry.value
+            if gamePlayer.team != userTeam  {
+                let dist = userGamePlayer.radialDistanceFrom(otherGamePlayer: gamePlayer)
                 if dist < minDist {
                     minDist = dist
-                    closestGamePlayer = entry.value
+                    closestOpponent = entry.value
                 }
             }
         }
         
+        if (closestOpponent == nil) {
+            handler("There are no opponents within taggable distance")
+            return
+        }
+        
         if minDist < TAGGABLE_RADIUS {
-            ref.child(PLAY_ROOMS_DB).child(ROOM_ID).child("players").child(closestGamePlayer.userId).child("active").setValue(false) { (error, dbRef) in
+            ref.child(PLAY_ROOMS_DB).child(ROOM_ID).child("players").child(closestOpponent!.userId).child("active").setValue(false) { (error, dbRef) in
                 if error != nil {
                     handler("Tag missed!")
                 } else {
-                    handler("\(closestGamePlayer.nickname) was tagged!")
+                    handler("\(closestOpponent!.nickname) was tagged!")
                 }
             }
         } else {
-            handler("No one was within taggable distance!")
+            handler("There are no opponents within taggable distance")
         }
     }
     
