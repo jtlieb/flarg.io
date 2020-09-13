@@ -19,6 +19,9 @@ class GameViewModel {
     var hostId: String!
     var gamePlayers: [String : GamePlayer]!
     
+    let TAGGABLE_RADIUS = 0.7
+
+    
     init(roomId: String, ref: DatabaseReference!, userId: String, hostId: String, gamePlayers: [String : GamePlayer]) {
         self.ROOM_ID = roomId
         self.ref = ref
