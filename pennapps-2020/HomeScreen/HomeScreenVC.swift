@@ -11,6 +11,7 @@ import Firebase
 
 class HomeScreenVC: UIViewController, UITextFieldDelegate {
     
+
     // On-Screen Components (buttons, labels, text boxes, etc)
     @IBOutlet var joinButton: UIButton!
     @IBOutlet var createButton: UIButton!

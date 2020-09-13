@@ -35,12 +35,32 @@ class GameVC: UIViewController, ARSCNViewDelegate {
     var delegate: LobbyVC?
     var viewModel: GameViewModel!
     
+    var team = Team.red
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         arView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
         arView.delegate = self
         arView.session.run(config)
         arView.session.delegate = self
+        
+        //let node = SCNNode(geometry: )
+                
+        redFlag.position = SCNVector3(0, 0, -10)
+        blueFlag.position = SCNVector3(0, 0, 10)
+
+        testPlayer.position = SCNVector3(0, 0, -2)
+        testPlayer.position = SCNVector3(2, 0 , -2)
+            
+        //       self.arView.scene.rootNode.addChildNode(redFlag)
+        //        self.arView.scene.rootNode.addChildNode(blueFlag)
+        //        self.arView.scene.rootNode.addChildNode(testPlayer)
+        //        self.arView.scene.rootNode.addChildNode(testPlayerFlag)
+        self.arView.scene.rootNode.addChildNode(field)
+        
+        
+        // Things after this are for game-only
+       guard !isDemo else { return}
         
 
         viewModel.observeGamePlayers { (error) in
@@ -50,19 +70,7 @@ class GameVC: UIViewController, ARSCNViewDelegate {
                 print(self.viewModel.getGamePlayers())
             }
         }
-        //let node = SCNNode(geometry: )
-                
-        redFlag.position = SCNVector3(0, 0, -10)
-        blueFlag.position = SCNVector3(0, 0, 10)
-        
-        testPlayer.position = SCNVector3(0, 0, -2)
-        testPlayer.position = SCNVector3(2, 0 , -2)
-            
-        self.arView.scene.rootNode.addChildNode(redFlag)
-//        self.arView.scene.rootNode.addChildNode(blueFlag)
-//        self.arView.scene.rootNode.addChildNode(testPlayer)
-//        self.arView.scene.rootNode.addChildNode(testPlayerFlag)
-        self.arView.scene.rootNode.addChildNode(field)
+
 
 
     }
@@ -84,6 +92,11 @@ extension GameVC: ARSessionDelegate {
         self.redFlag.position = SCNVector3(pos.x, -pos.y, -pos.z)
         self.arView.scene.rootNode.addChildNode(redFlag)
         
+        print("OOB:")
+        print(MovePolice.isOutOfBounds(x: CGFloat(pos.x), z: CGFloat(pos.z), team: .red))
+        print("SAFE:")
+        print(MovePolice.isSafe(x: CGFloat(pos.x), z: CGFloat(pos.z), team: .red))
+        
         guard isDemo == false else {
             return
         }
@@ -96,6 +109,8 @@ extension GameVC: ARSessionDelegate {
                 print(error)
             }
         }
+        
+        
        
     }
 }
