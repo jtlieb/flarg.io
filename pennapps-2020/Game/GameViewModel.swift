@@ -68,4 +68,25 @@ class GameViewModel {
 //            print(newPlayer.child("active"))
         }
     }
+    
+    // return true
+    func resurrectPlayer(userId: String) {
+            var player = gamePlayers[userId] as! GamePlayer
+            if !player.active {
+                if player.isInOwnTeamTerritory() {
+                    var timeRemaining = 300
+                    Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { (Timer) in
+                        if timeRemaining > 0 {
+                            timeRemaining -= 1
+                            if !player.isInOwnTeamTerritory() {
+                                return
+                            }
+                        } else {
+                            Timer.invalidate()
+                            player.active = true
+                        }
+                    }
+                }
+            }
+        }
 }
