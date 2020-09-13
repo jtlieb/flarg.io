@@ -18,7 +18,9 @@ class GameViewModel {
     var userId: String!
     var hostId: String!
     var gamePlayers: [String : GamePlayer]!
-    
+    var redFlagAvailable: Bool!
+    var blueFlagAvailable: Bool!
+
     let TAGGABLE_RADIUS = 0.7
 
     
@@ -28,6 +30,8 @@ class GameViewModel {
         self.userId = userId
         self.hostId = hostId
         self.gamePlayers = gamePlayers
+        self.redFlagAvailable = true
+        self.blueFlagAvailable = true
     }
     
     func getGamePlayers() -> [String: GamePlayer] {
@@ -39,6 +43,17 @@ class GameViewModel {
     //        let players: [String: String] = [userId:nickname]
         ref.child("\(self.PLAY_ROOMS_DB)/\(self.ROOM_ID)/players/\(userId)/x").setValue(x)
         ref.child("\(self.PLAY_ROOMS_DB)/\(self.ROOM_ID)/players/\(userId)/z").setValue(z)
+    }
+    
+    func observeFlagAvailability(flagString: String, handler: @escaping (String?, Bool?) -> Void) {
+        ref.child("\(self.PLAY_ROOMS_DB)/\(self.ROOM_ID)/\(flagString)/").observeSingleEvent(of: .value) { (snapshot) in
+            guard let flagAvailable = snapshot.value as? Bool else {
+                handler("flag available was not boolean", nil)
+                return
+            }
+            
+            handler(nil, flagAvailable)
+        }
     }
     
     func observeGamePlayers(handler: @escaping (String?) -> Void) {
