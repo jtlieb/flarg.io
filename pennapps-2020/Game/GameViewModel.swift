@@ -16,9 +16,9 @@ class GameViewModel {
     var ROOM_ID: String
     var userId: String!
     var hostId: String!
-    var gamePlayers: [GamePlayer]!
+    var gamePlayers: [String:GamePlayer]!
     
-    init(roomId: String, ref: DatabaseReference!, userId: String, hostId: String, gamePlayers: [GamePlayer]) {
+    init(roomId: String, ref: DatabaseReference!, userId: String, hostId: String, gamePlayers: [String:GamePlayer]) {
         self.ROOM_ID = roomId
         self.ref = ref
         self.userId = userId
@@ -33,12 +33,21 @@ class GameViewModel {
         ref.child("\(self.PLAY_ROOMS_DB)/\(self.ROOM_ID)/players/\(userId)/z").setValue(z)
     }
     
-    func observeGamePlayers(handler: @escaping (Error?) -> Void) {
+    func observeGamePlayers(handler: @escaping (String?) -> Void) {
         print("Observer Game Playersss-------------")
         print(hostId)
         ref.child("\(self.PLAY_ROOMS_DB)/\(self.ROOM_ID)/players/").observe(.childChanged) {(snapshot) in
+            guard var data = snapshot.value as? [String: GamePlayer] else {
+                handler("player  was invalid")
+                return
+            }
             print("observeGamePlayers")
-            print(snapshot)
+            let newPos = data["nickname"]
+            self.gamePlayers[snapshot.key] = newPos
+            print(snapshot.key)
+            print(data["nickname"])
+            print(data["x"])
+            print(data["z"])
         }
     }
 }
