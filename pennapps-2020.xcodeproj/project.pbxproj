@@ -17,6 +17,7 @@
 		137A5E7F250C3CD6003EAD14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 137A5E7D250C3CD6003EAD14 /* LaunchScreen.storyboard */; };
 		137A5E8B250C45F9003EAD14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 137A5E8A250C45F9003EAD14 /* GoogleService-Info.plist */; };
 		13AC1041250CC122003512FA /* LobbyPlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC1040250CC122003512FA /* LobbyPlayerTableViewCell.swift */; };
+		761DCA30250E145F00B6AFD1 /* GameActionLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761DCA2F250E145F00B6AFD1 /* GameActionLogic.swift */; };
 		76346068250C883900A24D75 /* LobbyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76346067250C883900A24D75 /* LobbyVC.swift */; };
 		7634606E250D1DAE00A24D75 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7634606D250D1DAE00A24D75 /* GameVC.swift */; };
 		76989E0A250D65B7000F5948 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 76989E09250D65B7000F5948 /* art.scnassets */; };
@@ -48,6 +49,7 @@
 		47BA84B57DF37F675E312A42 /* Pods_pennapps_2020.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pennapps_2020.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		544A82689B452E3DD85FDCCB /* Pods-pennapps-2020.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pennapps-2020.release.xcconfig"; path = "Target Support Files/Pods-pennapps-2020/Pods-pennapps-2020.release.xcconfig"; sourceTree = "<group>"; };
 		54C428A97DB3A55B6DE43E7F /* Pods-pennapps-2020.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pennapps-2020.debug.xcconfig"; path = "Target Support Files/Pods-pennapps-2020/Pods-pennapps-2020.debug.xcconfig"; sourceTree = "<group>"; };
+		761DCA2F250E145F00B6AFD1 /* GameActionLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameActionLogic.swift; sourceTree = "<group>"; };
 		76346067250C883900A24D75 /* LobbyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyVC.swift; sourceTree = "<group>"; };
 		7634606D250D1DAE00A24D75 /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
 		76989E09250D65B7000F5948 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				76989E0F250D8599000F5948 /* Nodes */,
 				7634606D250D1DAE00A24D75 /* GameVC.swift */,
 				FA4F6298250D5F3600653A62 /* GameViewModel.swift */,
+				761DCA2F250E145F00B6AFD1 /* GameActionLogic.swift */,
 				76989E1E250DE76E000F5948 /* GamePlayer.swift */,
 			);
 			path = Game;
@@ -296,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				761DCA30250E145F00B6AFD1 /* GameActionLogic.swift in Sources */,
 				76989E17250D8DD7000F5948 /* FieldBoundaries.swift in Sources */,
 				137A5E77250C3CD4003EAD14 /* HomeScreenVC.swift in Sources */,
 				137A5E73250C3CD4003EAD14 /* AppDelegate.swift in Sources */,

@@ -11,28 +11,28 @@ import Foundation
 extension GameViewModel {
         
     func takeAction(handler: @escaping (String) -> Void) {
-        var userGamePlayer: GamePlayer!
-        for entry in gamePlayers {
-            if entry.key == userId {
-                userGamePlayer = entry.value
-            }
-        }
+        print("taking action")
+
+        var userGamePlayer = gamePlayers[userId]
         
-        if !userGamePlayer.active {
+        if !userGamePlayer!.active {
             handler("You can't perform actions while being inactive")
             return
         }
         
-        if userGamePlayer.isInFlagZone() {
-            captureFlag(userGamePlayer: userGamePlayer, handler: handler)
+        print("user game player active")
+
+        
+        if userGamePlayer!.isInFlagZone() {
+            captureFlag(userGamePlayer: userGamePlayer!, handler: handler)
         } else {
-            tagClosestOpponentInRadius(userGamePlayer: userGamePlayer, handler: handler)
+            tagClosestOpponentInRadius(userGamePlayer: userGamePlayer!, handler: handler)
         }
     }
     
     private func captureFlag(userGamePlayer: GamePlayer, handler: @escaping (String) -> Void) {
         
-        let teamFlagString = userGamePlayer.team == 0 ? "redFlagAvailable" : "blueFlagAvailable"
+        let teamFlagString = userGamePlayer.team == 0 ? "blueFlagAvailable" : "redFlagAvailable"
         ref.child(PLAY_ROOMS_DB).child(ROOM_ID).child(teamFlagString).observeSingleEvent(of: .value) { (snapshot) in
             guard let flagAvailable = snapshot.value as? Bool else {
                 handler("flag available was not boolean")
@@ -44,6 +44,7 @@ extension GameViewModel {
                     if error != nil {
                         handler("Failed to pick up the flag!")
                     } else {
+                        self.ref.child(self.PLAY_ROOMS_DB).child(self.ROOM_ID).child(teamFlagString).setValue(false)
                         handler("You are holding the flag!")
                     }
                 }
@@ -76,8 +77,16 @@ extension GameViewModel {
             return
         }
         
+        let teamFlagString = closestOpponent!.team == 0 ? "blueFlagAvailable" : "redFlagAvailable"
+        
         if minDist < TAGGABLE_RADIUS {
             ref.child(PLAY_ROOMS_DB).child(ROOM_ID).child("players").child(closestOpponent!.userId).child("active").setValue(false) { (error, dbRef) in
+                
+                if (closestOpponent!.hasFlag) {
+                    self.ref.child(self.PLAY_ROOMS_DB).child(self.ROOM_ID).child("players").child(closestOpponent!.userId).child("hasFlag").setValue(false)
+                    self.ref.child(self.PLAY_ROOMS_DB).child(self.ROOM_ID).child(teamFlagString).setValue(true)
+                }
+
                 if error != nil {
                     handler("Tag missed!")
                 } else {

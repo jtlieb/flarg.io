@@ -12,7 +12,6 @@ import SceneKit
 
 class GameViewModel {
     var PLAY_ROOMS_DB: String = "flag_rooms"
-    
     var ref: DatabaseReference!
     var ROOM_ID: String
     var userId: String!
@@ -46,7 +45,7 @@ class GameViewModel {
     }
     
     func observeFlagAvailability(flagString: String, handler: @escaping (String?, Bool?) -> Void) {
-        ref.child("\(self.PLAY_ROOMS_DB)/\(self.ROOM_ID)/\(flagString)/").observeSingleEvent(of: .value) { (snapshot) in
+        ref.child("\(self.PLAY_ROOMS_DB)/\(self.ROOM_ID)/\(flagString)/").observe(.value) { (snapshot) in
             guard let flagAvailable = snapshot.value as? Bool else {
                 handler("flag available was not boolean", nil)
                 return
@@ -87,12 +86,36 @@ class GameViewModel {
         }
     }
     
+    func observeActiveStatus(handler: @escaping (String?, String?) -> Void) {
+        
+        ref.child(PLAY_ROOMS_DB).child(ROOM_ID).child("players").child(userId).child("active").observe(.value) { (snapshot) in
+            
+            print("observing active status")
+            guard let active = snapshot.value as? Bool else {
+                handler("active status was not boolean", nil)
+                return
+            }
+            
+            print("active: \(active)")
+            print(active)
+            
+            if active {
+                handler(nil, "You are now active!")
+            } else {
+                handler(nil, "You have been tagged!")
+                if (self.gamePlayers[self.userId]!.hasFlag) {
+                    self.ref.child(self.PLAY_ROOMS_DB).child(self.ROOM_ID).child("players").child(self.userId).child("hasFlag").setValue(false)
+                }
+            }
+        }
+    }
+    
     // return true
-    func resurrectPlayer(userId: String) {
-            var player = gamePlayers[userId] as! GamePlayer
+    func resurrectPlayer() {
+        var player = gamePlayers[userId]!
             if !player.active {
                 if player.isInOwnTeamTerritory() {
-                    var timeRemaining = 300
+                    var timeRemaining = 100
                     Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { (Timer) in
                         if timeRemaining > 0 {
                             timeRemaining -= 1
@@ -101,10 +124,12 @@ class GameViewModel {
                             }
                         } else {
                             Timer.invalidate()
-                            player.active = true
+                            self.ref.child(self.PLAY_ROOMS_DB).child(self.ROOM_ID).child("players").child(self.userId).child("active").setValue(true)
+//                            player.active = true
                         }
                     }
                 }
             }
         }
+
 }

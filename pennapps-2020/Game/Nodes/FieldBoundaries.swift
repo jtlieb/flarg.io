@@ -85,11 +85,11 @@ func newLine(team: Team?, isBackLine: Bool, length: Float) -> SCNNode {
     line.geometry = SCNBox(width: CGFloat(width) , height: 0.1, length: CGFloat(lengthParam), chamferRadius: 0)
     
     guard let team = team else {
-        line.geometry?.firstMaterial?.diffuse.contents = UIColor.green
+        line.geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
         return line
     }
     
-    line.geometry?.firstMaterial?.diffuse.contents = team == .red ? UIColor.red : UIColor.blue
+    line.geometry?.firstMaterial?.diffuse.contents = team == .red ? UIColor.systemPink : UIColor.systemIndigo
     
     
     return line

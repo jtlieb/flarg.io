@@ -125,7 +125,6 @@ class HomeScreenVC: UIViewController, UITextFieldDelegate {
         // If using the demo button on the homescreen, make sure to tell the game VC
         if segue.identifier == "demo" {
             let vc = segue.destination as! GameVC
-            vc.isDemo = true
             return
         }
         
