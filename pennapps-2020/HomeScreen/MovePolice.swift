@@ -43,4 +43,22 @@ class MovePolice {
         
     }
     
+    // Tells whether or not a player is in bounds
+    static func isInPlay(id: String) -> Bool {
+        // TODO: write some code with the Firebase shit idk loll
+        return false
+    }
+    
+    // Function that checks whether p1 could have tagged p2
+    static func isValidTag(p1X: Float, p1Z: Float, p2X: Float, p2Z: Float, p1Team: Team, p2Team: Team) -> Bool {
+        
+        // If player one is out of bounds, invalid tag
+        if isOutOfBounds(x: CGFloat(p1X), z: CGFloat(p1Z), team: p1Team) { return false }
+        
+        // If player two is safe invalid tag
+        if isSafe(x: CGFloat(p2X), z: CGFloat(p2Z), team: p2Team) { return false }
+        
+        // At this point, player one is in bounds and player two isn't safe
+        return true
+    }
 }
