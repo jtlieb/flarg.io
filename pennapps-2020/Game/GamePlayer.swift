@@ -86,4 +86,9 @@ struct GamePlayer {
             return z < 0
         }
     }
+    
+    func radialDistanceFrom(otherGamePlayer: GamePlayer) -> Double {
+        return sqrt(pow(otherGamePlayer.x - x, 2) + pow(otherGamePlayer.z - z, 2))
+    }
+    
 }
