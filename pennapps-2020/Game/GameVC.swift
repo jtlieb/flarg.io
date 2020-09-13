@@ -30,6 +30,14 @@ class GameVC: UIViewController, ARSCNViewDelegate {
         arView.delegate = self
         arView.session.run(config)
         arView.session.delegate = self
+        
+        viewModel.observeGamePlayers { (error) in
+            if error != nil {
+                print(error)
+            } else {
+                print(self.viewModel.getGamePlayers())
+            }
+        }
     }
     
 }
@@ -50,12 +58,6 @@ extension GameVC: ARSessionDelegate {
             }
         }
         print("updated pos func done")
-        viewModel.observeGamePlayers { (error) in
-            if error != nil {
-                print(error)
-            }
-        }
-        print("updated game players func done")
        
     }
 }
