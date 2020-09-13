@@ -35,6 +35,8 @@ class GameVC: UIViewController, ARSCNViewDelegate {
     var delegate: LobbyVC?
     var viewModel: GameViewModel!
     
+    var team = Team.red
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         arView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
@@ -58,7 +60,7 @@ class GameVC: UIViewController, ARSCNViewDelegate {
         testPlayer.position = SCNVector3(0, 0, -2)
         testPlayer.position = SCNVector3(2, 0 , -2)
             
-        self.arView.scene.rootNode.addChildNode(redFlag)
+//       self.arView.scene.rootNode.addChildNode(redFlag)
 //        self.arView.scene.rootNode.addChildNode(blueFlag)
 //        self.arView.scene.rootNode.addChildNode(testPlayer)
 //        self.arView.scene.rootNode.addChildNode(testPlayerFlag)
@@ -96,6 +98,11 @@ extension GameVC: ARSessionDelegate {
                 print(error)
             }
         }
+        
+        print("OOB:")
+        print(MovePolice.isOutOfBounds(x: CGFloat(pos.x), z: CGFloat(pos.z), team: .red))
+        print("SAFE:")
+        print(MovePolice.isSafe(x: CGFloat(pos.x), z: CGFloat(pos.z), team: .red))
        
     }
 }
