@@ -42,6 +42,14 @@ class GameVC: UIViewController, ARSCNViewDelegate {
         arView.session.run(config)
         arView.session.delegate = self
         
+
+        viewModel.observeGamePlayers { (error) in
+            if error != nil {
+                print(error)
+            } else {
+                print(self.viewModel.getGamePlayers())
+            }
+        }
         //let node = SCNNode(geometry: )
                 
         redFlag.position = SCNVector3(0, 0, -10)
@@ -88,10 +96,6 @@ extension GameVC: ARSessionDelegate {
                 print(error)
             }
         }
-        
-        
-        
-        
        
     }
 }

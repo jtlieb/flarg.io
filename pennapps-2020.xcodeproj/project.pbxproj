@@ -19,6 +19,7 @@
 		13AC1041250CC122003512FA /* LobbyPlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC1040250CC122003512FA /* LobbyPlayerTableViewCell.swift */; };
 		76346068250C883900A24D75 /* LobbyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76346067250C883900A24D75 /* LobbyVC.swift */; };
 		7634606E250D1DAE00A24D75 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7634606D250D1DAE00A24D75 /* GameVC.swift */; };
+		76989E0A250D65B7000F5948 /* Flargio.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 76989E09250D65B7000F5948 /* Flargio.scnassets */; };
 		76989E0A250D65B7000F5948 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 76989E09250D65B7000F5948 /* art.scnassets */; };
 		76989E0E250D6BA3000F5948 /* GamePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76989E0D250D6BA3000F5948 /* GamePlayer.swift */; };
 		76989E11250D85AC000F5948 /* FlagNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76989E10250D85AC000F5948 /* FlagNode.swift */; };
@@ -51,6 +52,7 @@
 		76346067250C883900A24D75 /* LobbyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyVC.swift; sourceTree = "<group>"; };
 		7634606D250D1DAE00A24D75 /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
 		76989E06250D6557000F5948 /* GamePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePlayer.swift; sourceTree = "<group>"; };
+		76989E09250D65B7000F5948 /* Flargio.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = Flargio.scnassets; sourceTree = "<group>"; };
 		76989E09250D65B7000F5948 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		76989E0D250D6BA3000F5948 /* GamePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GamePlayer.swift; path = "/Users/justinlieb/Documents/College/PennApps2020/pennapps-2020/Game/GamePlayer.swift"; sourceTree = "<absolute>"; };
 		76989E10250D85AC000F5948 /* FlagNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagNode.swift; sourceTree = "<group>"; };
@@ -82,7 +84,7 @@
 				137A5E70250C3CD4003EAD14 /* Products */,
 				9C7443281B792A62262A04E8 /* Pods */,
 				7058A40AFAA52444D88DF6C3 /* Frameworks */,
-				76989E0C250D6B52000F5948 /* Recovered References */,
+				FA4F629D250D74CB00653A62 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,7 +150,7 @@
 				76989E0F250D8599000F5948 /* Nodes */,
 				7634606D250D1DAE00A24D75 /* GameVC.swift */,
 				FA4F6298250D5F3600653A62 /* GameViewModel.swift */,
-				76989E0D250D6BA3000F5948 /* GamePlayer.swift */,
+				FA4F629A250D646600653A62 /* GamePlayer.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -187,6 +189,14 @@
 				544A82689B452E3DD85FDCCB /* Pods-pennapps-2020.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FA4F629D250D74CB00653A62 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				76989E06250D6557000F5948 /* GamePlayer.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,7 +408,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -452,7 +462,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -469,8 +480,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3456953M9M;
+				DEVELOPMENT_TEAM = LFFFF46AX3;
 				INFOPLIST_FILE = "pennapps-2020/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -491,6 +503,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LFFFF46AX3;
 				INFOPLIST_FILE = "pennapps-2020/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
