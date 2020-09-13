@@ -35,7 +35,9 @@ class HomeScreenVC: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.viewModel = HomeScreenViewModel(ref: Database.database().reference())
-
+        
+        joinButton.layer.cornerRadius = 8.0
+        createButton.layer.cornerRadius = 8.0
         roomLabel.isHidden = true
         nicknameLabel.isHidden = true
         nicknameTextField.delegate = self
