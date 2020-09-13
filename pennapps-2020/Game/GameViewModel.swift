@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import SceneKit
 
 class GameViewModel {
     var PLAY_ROOMS_DB: String = "flag_rooms"
@@ -57,7 +58,7 @@ class GameViewModel {
             let hasFlag = data["hasFlag"] as! Bool
             let x = data["x"] as! Double
             let z = data["z"] as! Double
-            let gamePlayer = GamePlayer(userId: userId, nickname: nickname, team: team, active: active, x: x, z: z, hasFlag: hasFlag)
+            let gamePlayer = GamePlayer(userId: userId, nickname: nickname, team: team, active: active, x: x, z: z, hasFlag: hasFlag, node: newPlayerNode(team: team == 0 ? .red : .blue))
             
             self.gamePlayers[userId] = gamePlayer
             

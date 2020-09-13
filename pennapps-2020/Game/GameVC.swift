@@ -20,6 +20,8 @@ class GameVC: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var yPos: UILabel!
     @IBOutlet weak var zPos: UILabel!
     
+    @IBOutlet weak var actionButton: UIButton!
+    
     var isDemo = false
     
     var redFlag = newFlagNode(team: .red)
@@ -58,6 +60,9 @@ class GameVC: UIViewController, ARSCNViewDelegate {
         //        self.arView.scene.rootNode.addChildNode(testPlayerFlag)
         self.arView.scene.rootNode.addChildNode(field)
         
+        self.navigationController?.navigationBar.isHidden = true
+        self.actionButton.titleLabel?.alpha = 1.0
+        
         
         // Things after this are for game-only
        guard !isDemo else { return}
@@ -92,10 +97,6 @@ extension GameVC: ARSessionDelegate {
         self.redFlag.position = SCNVector3(pos.x, -pos.y, -pos.z)
         self.arView.scene.rootNode.addChildNode(redFlag)
         
-        print("OOB:")
-        print(MovePolice.isOutOfBounds(x: CGFloat(pos.x), z: CGFloat(pos.z), team: .red))
-        print("SAFE:")
-        print(MovePolice.isSafe(x: CGFloat(pos.x), z: CGFloat(pos.z), team: .red))
         
         guard isDemo == false else {
             return
