@@ -58,7 +58,7 @@ class GameVC: UIViewController, ARSCNViewDelegate {
         //        self.arView.scene.rootNode.addChildNode(blueFlag)
         //        self.arView.scene.rootNode.addChildNode(testPlayer)
         //        self.arView.scene.rootNode.addChildNode(testPlayerFlag)
-        //       self.arView.scene.rootNode.addChildNode(field)
+        self.arView.scene.rootNode.addChildNode(field)
         
         self.navigationController?.navigationBar.isHidden = true
         self.actionButton.titleLabel?.alpha = 1.0
