@@ -81,9 +81,9 @@ struct GamePlayer {
         guard isSafe() else { return false }
         
         if self.team == 0 {
-            return z > 0
-        } else {
             return z < 0
+        } else {
+            return z > 0
         }
     }
     

@@ -21,10 +21,10 @@ func newFlagNode(team: Team) -> SCNNode {
     let flagPole = SCNNode()
     
     flaggyBoi.geometry = SCNBox(width: 0.75, height: 0.5, length: 0.05, chamferRadius: 0)
-    flaggyBoi.geometry?.firstMaterial?.diffuse.contents = team == .red ? UIColor.red : UIColor.blue
+    flaggyBoi.geometry?.firstMaterial?.diffuse.contents = team == .red ? UIColor.systemPink : UIColor.systemIndigo
     flaggyBoi.position = SCNVector3(0.375, 0.75, 0)
     flagPole.geometry = SCNBox(width: 0.1, height: 2, length: 0.1, chamferRadius: 0)
-    flagPole.geometry?.firstMaterial?.diffuse.contents = team == .red ? UIColor.red : UIColor.blue
+    flagPole.geometry?.firstMaterial?.diffuse.contents = team == .red ? UIColor.systemPink : UIColor.systemIndigo
     flagPole.position = SCNVector3(0, 0, 0)
     
     flag.addChildNode(flagPole)

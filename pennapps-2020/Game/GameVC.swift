@@ -18,6 +18,7 @@ class GameVC: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var arView: ARSCNView!
     
     @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var actionLabel: UILabel!
     
     var isDemo = false
     
@@ -63,16 +64,84 @@ class GameVC: UIViewController, ARSCNViewDelegate {
         // Things after this are for game-only
        guard !isDemo else { return}
         
+        viewModel.observeActiveStatus { (error, activeMessage) in
+            if (error != nil) {
+                print(error)
+            } else {
+                
+                self.actionLabel.text = activeMessage
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.actionLabel.text = ""
+                }
+            }
+        }
+        
+        viewModel.observeFlagAvailability(flagString: "redFlagAvailable") { (error, available) in
+            if (error != nil) {
+                print(error)
+            } else {
+                self.viewModel.redFlagAvailable = available
+            }
+        }
+        
+        viewModel.observeFlagAvailability(flagString: "blueFlagAvailable") { (error, available) in
+            print("*** blue flag available changed: \(available)")
+
+            if (error != nil) {
+                print(error)
+            } else {
+                self.viewModel.blueFlagAvailable = available
+            }
+        }
+        
 
         viewModel.observeGamePlayers { (error) in
             if error != nil {
                 print(error)
             } else {
 //                print(self.viewModel.getGamePlayers())
-                print("userId")
-                print(self.viewModel.userId)
+//                print("userId")
+//                print(self.viewModel.userId)
             }
         }
+    }
+    
+    
+    @IBAction func pressAction() {
+        viewModel.takeAction() { actionMessage in
+            self.actionLabel.text = actionMessage
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.actionLabel.text = ""
+            }
+        }
+    }
+    
+    func updateControls() {
+        
+        var player = self.viewModel.gamePlayers[self.viewModel.userId]!
+        
+        guard player.active else {
+            actionButton.isEnabled = false
+            return
+        }
+        
+        let flagAvail = player.team == 0 ? viewModel.blueFlagAvailable : viewModel.redFlagAvailable
+        
+        
+        if player.isInFlagZone() && flagAvail! { // && view model. flag is available
+            actionButton.isHidden = false
+            actionButton.setTitle("GET FLAG!", for: .normal)
+        } else if player.isInOwnTeamTerritory() {
+            actionButton.setTitle("TAG", for: .normal)
+            actionButton.isHidden = false
+        } else {
+            actionButton.isHidden = true
+        }
+        
+        
+        
     }
     
     
@@ -80,11 +149,28 @@ class GameVC: UIViewController, ARSCNViewDelegate {
     
     func moveAndRender() {
         
+        updateControls()
+        
         self.arView.scene.rootNode.enumerateChildNodes() { (node, stop) in
            node.removeFromParentNode()
             
         }
         self.arView.scene.rootNode.addChildNode(buildField())
+        if self.viewModel.blueFlagAvailable {
+            let node = newFlagNode(team: .blue)
+            self.arView.scene.rootNode.addChildNode(node)
+            
+            node.position = SCNVector3(0, 0, (COURT_LENGTH + SAFE_ZONE_LENGTH) / 2)
+            
+        }
+        
+        if self.viewModel.redFlagAvailable {
+            let node = newFlagNode(team: .red)
+            self.arView.scene.rootNode.addChildNode(node)
+            
+            node.position = SCNVector3(0, 0, -(COURT_LENGTH + SAFE_ZONE_LENGTH) / 2)
+            
+        }
         
         for playerID in viewModel.gamePlayers.keys {
             let player = viewModel.gamePlayers[playerID]!
@@ -108,7 +194,7 @@ class GameVC: UIViewController, ARSCNViewDelegate {
             
 
             // Making sure it has the right color
-            var color = player.team == 0 ? UIColor.red : UIColor.blue
+            var color = player.team == 0 ? UIColor.systemPink : UIColor.systemIndigo
             if !player.active { color = UIColor(named: "\(player.team == 0 ? "red" : "blue")_out")! }
 
             
@@ -138,14 +224,10 @@ extension GameVC: ARSessionDelegate {
 //        self.redFlag.position = SCNVector3(pos.x, -pos.y, -pos.z)
 //        self.arView.scene.rootNode.addChildNode(redFlag)
         
-        
-        guard isDemo == false else {
-            return
-        }
+        viewModel.resurrectPlayer()
         
         // Things after here run if it's a real game
             
-        print(viewModel.userId)
         viewModel.updatePosition(userId: viewModel.userId, x: Double(pos.x), z: Double(pos.z)) { (error) in
             if error != nil {
                 print(error)
