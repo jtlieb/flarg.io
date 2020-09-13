@@ -10,18 +10,27 @@ import Foundation
 import UIKit
 import ARKit
 import Firebase
+import SceneKit
 
 class GameVC: UIViewController, ARSCNViewDelegate {
-    
+        
     
     @IBOutlet weak var arView: ARSCNView!
     @IBOutlet weak var xPos: UILabel!
     @IBOutlet weak var yPos: UILabel!
     @IBOutlet weak var zPos: UILabel!
     
+    var redFlag = newFlagNode(team: .red)
+    var blueFlag = newFlagNode(team: .blue)
+    
+    var testPlayer = newPlayerNode(team: .red)
+    var testPlayerFlag = newPlayerWithFlagNode(team: .blue)
+    
+    var field = buildField()
+    
     let config = ARWorldTrackingConfiguration()
     
-    var delegate: LobbyVC!
+    var delegate: LobbyVC?
     var viewModel: GameViewModel!
     
     override func viewDidLoad() {
@@ -30,6 +39,22 @@ class GameVC: UIViewController, ARSCNViewDelegate {
         arView.delegate = self
         arView.session.run(config)
         arView.session.delegate = self
+        
+        //let node = SCNNode(geometry: )
+                
+        redFlag.position = SCNVector3(0, 0, -10)
+        blueFlag.position = SCNVector3(0, 0, 10)
+        
+        testPlayer.position = SCNVector3(0, 0, -2)
+        testPlayer.position = SCNVector3(2, 0 , -2)
+            
+        self.arView.scene.rootNode.addChildNode(redFlag)
+//        self.arView.scene.rootNode.addChildNode(blueFlag)
+//        self.arView.scene.rootNode.addChildNode(testPlayer)
+//        self.arView.scene.rootNode.addChildNode(testPlayerFlag)
+//        self.arView.scene.rootNode.addChildNode(field)
+
+
     }
     
 }
@@ -43,6 +68,10 @@ extension GameVC: ARSessionDelegate {
         self.xPos.text = "\(pos.x)"
         self.yPos.text = "\(pos.y)"
         self.zPos.text = "\(pos.z)"
+        
+        
+            
+        // Things that should run when in a real game
         print(viewModel.userId)
         viewModel.updatePosition(userId: viewModel.userId, x: Double(pos.x), z: Double(pos.z)) { (error) in
             if error != nil {
@@ -50,6 +79,12 @@ extension GameVC: ARSessionDelegate {
             }
         }
         
+        
+        self.redFlag.removeFromParentNode()
+        self.redFlag.position = SCNVector3(pos.x, -pos.y, -pos.z)
+        self.arView.scene.rootNode.addChildNode(redFlag)
+        
        
     }
 }
+
