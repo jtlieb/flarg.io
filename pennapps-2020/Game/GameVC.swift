@@ -80,6 +80,8 @@ class GameVC: UIViewController, ARSCNViewDelegate {
     func moveAndRender() {
         for playerID in viewModel.gamePlayers.keys {
             
+            guard playerID != viewModel.userId else { return }
+            
             let player = viewModel.gamePlayers[playerID]!
 
             // Extracting node, removing it from parent, changing p
