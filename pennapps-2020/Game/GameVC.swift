@@ -41,7 +41,7 @@ class GameVC: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        arView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
+        arView.debugOptions = [ARSCNDebugOptions.showWorldOrigin]
         arView.delegate = self
         arView.session.run(config)
         arView.session.delegate = self
@@ -58,7 +58,7 @@ class GameVC: UIViewController, ARSCNViewDelegate {
         //        self.arView.scene.rootNode.addChildNode(blueFlag)
         //        self.arView.scene.rootNode.addChildNode(testPlayer)
         //        self.arView.scene.rootNode.addChildNode(testPlayerFlag)
-        self.arView.scene.rootNode.addChildNode(field)
+        //       self.arView.scene.rootNode.addChildNode(field)
         
         self.navigationController?.navigationBar.isHidden = true
         self.actionButton.titleLabel?.alpha = 1.0
@@ -93,9 +93,10 @@ extension GameVC: ARSessionDelegate {
         self.zPos.text = "\(pos.z)"
         
         
-        self.redFlag.removeFromParentNode()
-        self.redFlag.position = SCNVector3(pos.x, -pos.y, -pos.z)
-        self.arView.scene.rootNode.addChildNode(redFlag)
+        // these are helpful for knowing how to do the rerender
+//        self.redFlag.removeFromParentNode()
+//        self.redFlag.position = SCNVector3(pos.x, -pos.y, -pos.z)
+//        self.arView.scene.rootNode.addChildNode(redFlag)
         
         
         guard isDemo == false else {
