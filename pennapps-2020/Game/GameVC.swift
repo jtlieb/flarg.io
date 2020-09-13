@@ -20,22 +20,13 @@ class GameVC: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var actionLabel: UILabel!
     
-    var isDemo = false
-    
-    var redFlag = newFlagNode(team: .red)
-    var blueFlag = newFlagNode(team: .blue)
-    
-    var testPlayer = newPlayerNode(team: .red)
-    var testPlayerFlag = newPlayerWithFlagNode(team: .blue)
     var field = buildField()
     
     let config = ARWorldTrackingConfiguration()
     
     var delegate: LobbyVC?
     var viewModel: GameViewModel!
-    
-    var team = Team.red
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         arView.debugOptions = [ARSCNDebugOptions.showWorldOrigin]
@@ -43,26 +34,10 @@ class GameVC: UIViewController, ARSCNViewDelegate {
         arView.session.run(config)
         arView.session.delegate = self
         
-        //let node = SCNNode(geometry: )
-                
-        redFlag.position = SCNVector3(0, 0, -10)
-        blueFlag.position = SCNVector3(0, 0, 10)
-
-        testPlayer.position = SCNVector3(0, 0, -2)
-        testPlayer.position = SCNVector3(2, 0 , -2)
-            
-        //       self.arView.scene.rootNode.addChildNode(redFlag)
-        //        self.arView.scene.rootNode.addChildNode(blueFlag)
-        //        self.arView.scene.rootNode.addChildNode(testPlayer)
-        //        self.arView.scene.rootNode.addChildNode(testPlayerFlag)
         self.arView.scene.rootNode.addChildNode(field)
         
         self.navigationController?.navigationBar.isHidden = true
         self.actionButton.titleLabel?.alpha = 1.0
-        
-        
-        // Things after this are for game-only
-       guard !isDemo else { return}
         
         viewModel.observeActiveStatus { (error, activeMessage) in
             if (error != nil) {
@@ -127,8 +102,11 @@ class GameVC: UIViewController, ARSCNViewDelegate {
             return
         }
         
+        
         let flagAvail = player.team == 0 ? viewModel.blueFlagAvailable : viewModel.redFlagAvailable
         
+        print("FLAGAVAIL:\(flagAvail) INFLAGZONE: \(player.isInFlagZone())")
+
         
         if player.isInFlagZone() && flagAvail! { // && view model. flag is available
             actionButton.isHidden = false

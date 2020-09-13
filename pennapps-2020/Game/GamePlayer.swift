@@ -44,7 +44,7 @@ struct GamePlayer {
        
         var z = Float(self.z)
         
-        let inSafeArea = self.team == 0 ? z > COURT_LENGTH / 2 : z < -COURT_LENGTH - 2
+        let inSafeArea = self.team == 0 ? z > COURT_LENGTH / 2 : z < -COURT_LENGTH / 2
         let inOwnArea = self.team == 0 ? z < 0 : z > 0
 
         return inSafeArea || inOwnArea
@@ -63,13 +63,13 @@ struct GamePlayer {
     func isInFlagZone() -> Bool {
         let z = Float(self.z)
         
-        guard !isOutOfBounds() else { return false }
-        guard isSafe() else { return false }
+        guard !isOutOfBounds() else { print("OOB"); return false }
+        guard isSafe() else { print("NOTSAFE") ; return false }
         
         if self.team == 0 {
             return z > COURT_LENGTH * 0.5
         } else {
-            return z < -COURT_LENGTH * 0.5
+            return z < -0.5 * COURT_LENGTH
         }
         
     }
