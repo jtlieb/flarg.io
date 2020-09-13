@@ -43,13 +43,19 @@ extension GameVC: ARSessionDelegate {
         self.xPos.text = "\(pos.x)"
         self.yPos.text = "\(pos.y)"
         self.zPos.text = "\(pos.z)"
-        print(viewModel.userId)
+//        print(viewModel.userId)
         viewModel.updatePosition(userId: viewModel.userId, x: Double(pos.x), z: Double(pos.z)) { (error) in
             if error != nil {
                 print(error)
             }
         }
-        
+        print("updated pos func done")
+        viewModel.observeGamePlayers { (error) in
+            if error != nil {
+                print(error)
+            }
+        }
+        print("updated game players func done")
        
     }
 }
