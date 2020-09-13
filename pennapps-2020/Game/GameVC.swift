@@ -116,7 +116,7 @@ class GameVC: UIViewController, ARSCNViewDelegate {
                 color.withAlphaComponent(0)
             }
             color.withAlphaComponent(0.7)
-            player.node.geometry?.firstMaterial?.diffuse.contents = color
+            newNode.geometry?.firstMaterial?.diffuse.contents = color
 
             // Adding the child back
             self.arView.scene.rootNode.addChildNode(newNode)
