@@ -75,11 +75,27 @@ class GameVC: UIViewController, ARSCNViewDelegate {
                 print(self.viewModel.getGamePlayers())
             }
         }
-
-
-
     }
     
+    func moveAndRender() {
+        for player in viewModel.gamePlayers.values {
+
+            // Extracting node, removing it from parent, changing p
+            let node = player.node
+            player.node.removeFromParentNode()
+            player.node.position = SCNVector3(player.x, 0, player.z)
+
+            // Making sure it has the right color
+            var color = player.team == 0 ? UIColor.red : UIColor.blue
+            if !player.active { color = UIColor(named: "\(player.team == 0 ? "red" : "blue")_out")! }
+
+            color.withAlphaComponent(0.7)
+            player.node.geometry?.firstMaterial?.diffuse.contents = color
+
+            // Adding the child back
+            self.arView.scene.rootNode.addChildNode(player.node)
+        }
+    }
 }
 
 extension GameVC: ARSessionDelegate {
@@ -111,9 +127,6 @@ extension GameVC: ARSessionDelegate {
                 print(error)
             }
         }
-        
-        
-       
     }
 }
 
